@@ -19,8 +19,9 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', function(){
-    return view('pages.admin.dashboard');
+Route::group(['middleware' => ['auth', 'checkRole:super-admin,admin,operator']], function(){
+    Route::get('/dashboard', function(){
+        return view('pages.admin.dashboard');
+    });
 });
