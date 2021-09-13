@@ -45,4 +45,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function office(){
+        return $this->belongsTo(Office::class, 'code', 'code');
+    }
+
+    public function farm(){
+        return $this->belongsTo(Farm::class, 'code', 'code');
+    }
 }
