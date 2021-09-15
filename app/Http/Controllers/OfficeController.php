@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OfficeRequest;
+use App\Http\Requests\OfficeUpdateRequest;
 use App\Models\Office;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -77,7 +78,11 @@ class OfficeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $office = Office::findOrFail($id);
+
+        return view('pages.admin.office.edit', [
+            'office' => $office
+        ]);//
     }
 
     /**
@@ -87,9 +92,14 @@ class OfficeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OfficeUpdateRequest $request, Office $office)
     {
-        //
+        $data = $request->all();
+
+        $office->update($data);
+
+        Alert::success('Success', 'Data Office Successfully Updated');
+        return redirect()->route('office.index');
     }
 
     /**
@@ -98,8 +108,10 @@ class OfficeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Office $office)
     {
-        //
+        $office->delete();
+
+        return redirect()->route('office.index');
     }
 }
