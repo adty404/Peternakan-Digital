@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link">
+                    <a href="{{ route('office.index') }}" class="nav-link {{ (request()->is('office*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-alt"></i>
                         <p>
                             Office

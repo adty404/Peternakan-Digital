@@ -10,6 +10,8 @@ class Office extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'office';
+
     protected $fillable = ['code', 'name', 'address', 'email', 'phone', 'pic'];
 
     protected $hidden = [];

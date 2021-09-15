@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,7 @@ Route::group(['middleware' => ['auth', 'checkRole:master']], function(){
 
     //User
     Route::resource('user', UserController::class);
+
+    //Office
+    Route::resource('office', OfficeController::class);
 });
