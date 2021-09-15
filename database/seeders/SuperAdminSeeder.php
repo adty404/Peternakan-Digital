@@ -24,7 +24,7 @@ class SuperAdminSeeder extends Seeder
             'created_by' => '1',
             'updated_by' => '1',
             'role' => 'super-admin',
-            'code' => '',
+            'code' => 'dPFSATjAxlkeHlD8Euz4',
         ]);
     }
 }
