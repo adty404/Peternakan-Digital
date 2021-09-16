@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Add User Office Data
+Edit User Office Data
 @endsection
 
 @push('prepend-style')
@@ -23,7 +23,7 @@ Add User Office Data
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
-                        <li class="breadcrumb-item active">Add Data</li>
+                        <li class="breadcrumb-item active">Edit Data</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -40,7 +40,7 @@ Add User Office Data
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Add Data</h3>
+                            <h3 class="card-title">Edit Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -53,29 +53,40 @@ Add User Office Data
                             </ul>
                         </div>
                         @endif
-                        <form method="POST" action="{{ route('user-office.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('user-office.update', $user->id) }}" enctype="multipart/form-data">
                             @csrf
+                            @method("PUT")
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Name" value="{{ old('name') }}" required>
+                                        placeholder="Name" value="{{ $user->name ?? old('name') }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="email" name="email" class="form-control" id="email"
-                                        placeholder="Email" value="{{ old('email') }}" required>
+                                        placeholder="Email" value="{{ $user->email ?? old('email') }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" class="form-control" id="password"
-                                        placeholder="Password" value="{{ old('password') }}" required>
+                                        placeholder="Password" value="">
+                                    <p style="margin-top: 10px; color:grey; text-align:left;">
+                                        <i>*Leave it blank if do not want to change</i> <br />
+                                    </p>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Office</label>
                                     <select name="code" id="" class="form-control select2">
                                         @foreach ($offices as $office)
-                                        <option value="{{ $office->code }}">{{ $office->name }}</option>
+                                            <option
+                                                value="{{ $office->code }}"
+                                                @if ($office->code === $user->code)
+                                                    selected
+                                                @endif
+                                            >
+                                                {{ $office->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>

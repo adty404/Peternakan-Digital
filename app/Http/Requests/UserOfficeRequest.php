@@ -32,7 +32,7 @@ class UserOfficeRequest extends FormRequest
             'created_by' => ['required', 'numeric'],
             'updated_by' => ['required', 'numeric'],
             // role
-            // code
+            'code' => ['required']
         ];
     }
 }

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserOfficeRequest;
+use App\Http\Requests\UserOfficeUpdateRequest;
 use App\Models\Office;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UserOfficeController extends Controller
@@ -99,7 +101,12 @@ class UserOfficeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('pages.admin.user_office.edit', [
+            'user' => $user,
+            'offices' => Office::orderBy('id', 'ASC')->get(),
+        ]);
     }
 
     /**
@@ -111,7 +118,39 @@ class UserOfficeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $user = User::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => ['required', 'max:255'],
+            'email' => ['unique:users,email,'.$user->id],
+            // email_verified_at
+            'password' => ['nullable','min:6'],
+            // remember token
+            'created_by' => ['required', 'numeric'],
+            'updated_by' => ['required', 'numeric'],
+            // role
+            'code' => ['required']
+        ]);
+
+        if($request->has('password')){
+            $password = bcrypt($request->password);
+        }else{
+            $password = $user->password;
+        }
+
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['password'] = $password;
+        $data['created_by'] = $request->created_by;
+        $data['updated_by'] = $request->updated_by;
+        $data['role'] = 'super-admin';
+        $data['code'] = $request->code;        
+
+        $user->update($data);
+
+        Alert::success('Success', 'Data User Office Successfully Updated');
+        return redirect()->route('user-office.index');
     }
 
     /**
@@ -122,6 +161,9 @@ class UserOfficeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('user-office.index');
     }
 }
