@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserOfficeRequest;
+use App\Models\Office;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserOfficeController extends Controller
 {
@@ -48,7 +52,9 @@ class UserOfficeController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.user_office.create', [
+            'offices' => Office::orderBy('id', 'ASC')->get(),
+        ]);
     }
 
     /**
@@ -57,9 +63,21 @@ class UserOfficeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserOfficeRequest $request)
     {
-        //
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'created_by' => $request->created_by,
+            'updated_by' => $request->updated_by,
+            'role' => 'super-admin',
+            'code' => $request->code,
+        ]);
+
+        Alert::success('Success', 'Data User Office Successfully Created');
+        return redirect()->route('user-office.index');
+
     }
 
     /**

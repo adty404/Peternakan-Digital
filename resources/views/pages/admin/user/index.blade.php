@@ -35,12 +35,6 @@ Users
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{ route('user-all.create') }}">
-                                <button type="button" class="btn btn-primary" style="float: right;">
-                                    <i class="fa fa-plus"></i>
-                                    Add Data
-                                </button>
-                            </a>
                             <h3 class="card-title">User Table</h3>
                         </div>
     
