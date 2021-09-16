@@ -1,5 +1,5 @@
-<a href="{{ route('user.edit', $model) }}" class="btn btn-warning btn-sm">Edit</a>
-<button href="{{ route('user.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Hapus</button>
+<a href="{{ route('user-all.edit', $model) }}" class="btn btn-warning btn-sm">Edit</a>
+<button href="{{ route('user-all.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Hapus</button>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script>

@@ -35,7 +35,7 @@ Users
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{ route('user.create') }}">
+                            <a href="{{ route('user-all.create') }}">
                                 <button type="button" class="btn btn-primary" style="float: right;">
                                     <i class="fa fa-plus"></i>
                                     Add Data
@@ -50,7 +50,9 @@ Users
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Office/Farm</th>
+                                        <th>Role</th>
+                                        <th>Office</th>
+                                        <th>Farm</th>
                                         <th>Email</th>
                                         <th>Created By</th>
                                         <th>Updated By</th>
@@ -125,8 +127,16 @@ Users
                 name: 'name'
             },
             {
-                data: 'code',
-                name: 'code'
+                data: 'role',
+                name: 'role'
+            },
+            {
+                data: 'office',
+                name: 'office'
+            },
+            {
+                data: 'farm',
+                name: 'farm'
             },
             {
                 data: 'email',

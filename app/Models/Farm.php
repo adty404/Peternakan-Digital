@@ -10,6 +10,8 @@ class Farm extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'farm';
+
     protected $fillable = ['code', 'office_id', 'name', 'address', 'email', 'phone', 'pic'];
 
     protected $hidden = [];

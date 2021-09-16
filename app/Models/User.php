@@ -53,4 +53,12 @@ class User extends Authenticatable
     public function farm(){
         return $this->belongsTo(Farm::class, 'code', 'code');
     }
+    
+    public function cb(){
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+    public function ub(){
+        return $this->belongsTo(User::class, 'updated_by', 'id');
+    }
 }
