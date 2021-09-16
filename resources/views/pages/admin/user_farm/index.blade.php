@@ -6,6 +6,7 @@ Users Farm
 
 @section('content')
 <div class="content-wrapper">
+    @include('sweetalert::alert')
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">

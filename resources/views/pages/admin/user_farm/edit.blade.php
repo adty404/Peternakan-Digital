@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Edit User Office Data
+Edit User Farm Data
 @endsection
 
 @push('prepend-style')
@@ -15,11 +15,11 @@ Edit User Office Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">User Office</h1>
+                    <h1 class="m-0">User Farm</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">User Office</a></li>
+                        <li class="breadcrumb-item"><a href="#">User Farm</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
@@ -53,19 +53,20 @@ Edit User Office Data
                             </ul>
                         </div>
                         @endif
-                        <form method="POST" action="{{ route('user-office.update', $user->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('user-farm.update', $user->id) }}"
+                            enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Name" value="{{ $user->name ?? old('name') }}" required>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Name"
+                                        value="{{ $user->name ?? old('name') }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email"
-                                        placeholder="Email" value="{{ $user->email ?? old('email') }}" required>
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="Email"
+                                        value="{{ $user->email ?? old('email') }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
@@ -76,17 +77,22 @@ Edit User Office Data
                                     </p>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Office</label>
+                                    <label for="">Role</label>
+                                    <select name="role" id="" class="form-control select2">
+                                        <option value="admin" @if($user -> role == 'admin') selected @endif>Admin</option>
+                                        <option value="operator" @if($user -> role == 'operator') selected @endif>Operator</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Farm</label>
                                     <select name="code" id="" class="form-control select2">
-                                        @foreach ($offices as $office)
-                                            <option
-                                                value="{{ $office->code }}"
-                                                @if ($office->code === $user->code)
-                                                    selected
-                                                @endif
+                                        @foreach ($farms as $farm)
+                                        <option value="{{ $farm->code }}" @if ($farm->code === $user->code)
+                                            selected
+                                            @endif
                                             >
-                                                {{ $office->name }}
-                                            </option>
+                                            {{ $farm->name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Edit User Office Data
+Add User Farm Data
 @endsection
 
 @push('prepend-style')
@@ -15,15 +15,15 @@ Edit User Office Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">User Office</h1>
+                    <h1 class="m-0">User Farm</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">User Office</a></li>
+                        <li class="breadcrumb-item"><a href="#">User Farm</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
-                        <li class="breadcrumb-item active">Edit Data</li>
+                        <li class="breadcrumb-item active">Add Data</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -38,9 +38,9 @@ Edit User Office Data
                 <!-- left column -->
                 <div class="col-md-12">
                     <!-- general form elements -->
-                    <div class="card card-warning">
+                    <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Edit Data</h3>
+                            <h3 class="card-title">Add Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -53,40 +53,36 @@ Edit User Office Data
                             </ul>
                         </div>
                         @endif
-                        <form method="POST" action="{{ route('user-office.update', $user->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('user-farm.store') }}" enctype="multipart/form-data">
                             @csrf
-                            @method("PUT")
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Name" value="{{ $user->name ?? old('name') }}" required>
+                                        placeholder="Name" value="{{ old('name') }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="email" name="email" class="form-control" id="email"
-                                        placeholder="Email" value="{{ $user->email ?? old('email') }}" required>
+                                        placeholder="Email" value="{{ old('email') }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" class="form-control" id="password"
-                                        placeholder="Password" value="">
-                                    <p style="margin-top: 10px; color:grey; text-align:left;">
-                                        <i>*Leave it blank if do not want to change</i> <br />
-                                    </p>
+                                        placeholder="Password" value="{{ old('password') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Office</label>
+                                    <label for="">Role</label>
+                                    <select name="role" id="" class="form-control select2">
+                                        <option value="admin">Admin</option>
+                                        <option value="operator">Operator</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Farm</label>
                                     <select name="code" id="" class="form-control select2">
-                                        @foreach ($offices as $office)
-                                            <option
-                                                value="{{ $office->code }}"
-                                                @if ($office->code === $user->code)
-                                                    selected
-                                                @endif
-                                            >
-                                                {{ $office->name }}
-                                            </option>
+                                        @foreach ($farms as $farm)
+                                        <option value="{{ $farm->code }}">{{ $farm->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -96,7 +92,7 @@ Edit User Office Data
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-warning">Submit</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </div>

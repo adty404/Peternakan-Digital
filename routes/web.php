@@ -33,13 +33,16 @@ Route::group(['middleware' => ['auth', 'checkRole:master']], function(){
     Route::resource('office', OfficeController::class);
 });
 
-Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin,operator']], function(){
-    //Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
+Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], function(){
     //User Office
     Route::resource('user-office', UserOfficeController::class);
 
     //User Farm
     Route::resource('user-farm', UserFarmController::class);
 });
+
+Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin,operator']], function(){
+    //Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+
