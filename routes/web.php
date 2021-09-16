@@ -3,6 +3,8 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserFarmController;
+use App\Http\Controllers\UserOfficeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,12 +26,20 @@ Auth::routes(['register' => false]);
 
 
 Route::group(['middleware' => ['auth', 'checkRole:master']], function(){
-    //Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
     //User
-    Route::resource('user', UserController::class);
+    Route::resource('user-all', UserController::class);
 
     //Office
     Route::resource('office', OfficeController::class);
+});
+
+Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin,operator']], function(){
+    //Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    //User Office
+    Route::resource('user-office', UserOfficeController::class);
+
+    //User Farm
+    Route::resource('user-farm', UserFarmController::class);
 });

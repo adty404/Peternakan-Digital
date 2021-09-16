@@ -18,23 +18,46 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link {{ (request()->is('dashboard*')) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard') }}"
+                        class="nav-link {{ (request()->is('dashboard*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('user.index') }}" class="nav-link {{ (request()->is('user*')) ? 'active' : '' }}">
+                <li class="nav-item {{ (request()->is('user*')) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ (request()->is('user*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             User
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('user-all.index') }}" class="nav-link {{ (request()->is('user-all*')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('user-office.index') }}" class="nav-link {{ (request()->is('user-office*')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Office</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('user-farm.index') }}" class="nav-link {{ (request()->is('user-farm*')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Farm</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('office.index') }}" class="nav-link {{ (request()->is('office*')) ? 'active' : '' }}">
+                    <a href="{{ route('office.index') }}"
+                        class="nav-link {{ (request()->is('office*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-alt"></i>
                         <p>
                             Office
@@ -58,13 +81,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('dashboard') }}" class="nav-link">
-                      <i class="nav-icon fas fa-user-alt"></i>
-                      <p>
-                          Animal
-                      </p>
-                  </a>
-              </li>
+                    <a href="{{ route('dashboard') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user-alt"></i>
+                        <p>
+                            Animal
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
