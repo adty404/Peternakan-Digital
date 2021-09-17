@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FarmController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserFarmController;
@@ -25,12 +26,9 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 
-Route::group(['middleware' => ['auth', 'checkRole:master']], function(){
-    //User
-    Route::resource('user-all', UserController::class);
-
-    //Office
-    Route::resource('office', OfficeController::class);
+Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin,operator']], function(){
+    //Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], function(){
@@ -39,10 +37,18 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], functio
 
     //User Farm
     Route::resource('user-farm', UserFarmController::class);
+
+    //Office
+    Route::resource('office', OfficeController::class);
+
+    //Farm
+    Route::resource('farm', FarmController::class);
 });
 
-Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin,operator']], function(){
-    //Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::group(['middleware' => ['auth', 'checkRole:master']], function(){
+    //User
+    Route::resource('user-all', UserController::class);
 });
+
+
 

@@ -12,11 +12,13 @@ class DashboardController extends Controller
     }
 
     public function index(){
-        $user = auth()->user();
+        // $user = auth()->user();
 
-        if($user->role == 'master'){
-            return view('pages.admin.dashboard');
-        }
+        // if($user->role == 'master'){
+        //     return view('pages.admin.dashboard');
+        // }
+
+        return view('pages.admin.dashboard');
 
         return redirect('/');
     }
