@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FarmRequest;
 use App\Models\Farm;
+use App\Models\Office;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FarmController extends Controller
 {
@@ -15,14 +19,13 @@ class FarmController extends Controller
      */
     public function index()
     {
-        
-        $office_id = auth()->user()->office->id;
-
         $user = auth()->user();
 
         if($user['role'] == 'master'){
             $query = Farm::query();
         }else if($user['role'] == 'super-admin'){
+            $office_id = auth()->user()->office->id;
+
             $query = Farm::where('office_id', $office_id);
         }
 
@@ -47,7 +50,14 @@ class FarmController extends Controller
      */
     public function create()
     {
-        //
+        $user = auth()->user();
+
+        $offices = Office::all();
+
+        return view('pages.admin.farm.create', [
+            'offices' => $offices,
+        ]);
+
     }
 
     /**
@@ -56,9 +66,16 @@ class FarmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FarmRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $data['code'] = Str::random(20);
+
+        Farm::create($data);
+
+        Alert::success('Success', 'Data Farm Successfully Created');
+        return redirect()->route('farm.index');//
     }
 
     /**

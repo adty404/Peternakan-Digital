@@ -1,8 +1,12 @@
 @extends('layouts.admin')
 
 @section('title')
-Add Office Data
+Add Farm Data
 @endsection
+
+@push('prepend-style')
+<link href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
+@endpush
 
 @section('content')
 <div class="content-wrapper">
@@ -11,11 +15,11 @@ Add Office Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Office</h1>
+                    <h1 class="m-0">Farm</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Office</a></li>
+                        <li class="breadcrumb-item"><a href="#">Farm</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
@@ -49,7 +53,7 @@ Add Office Data
                             </ul>
                         </div>
                         @endif
-                        <form method="POST" action="{{ route('office.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('farm.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -76,6 +80,20 @@ Add Office Data
                                     <input type="text" name="pic" class="form-control" id="pic"
                                         placeholder="Pic" value="{{ old('pic') }}" required>
                                 </div>
+                                @if(auth()->user()->role == 'master')
+                                <div class="form-group">
+                                    <label for="">Office</label>
+                                    <select name="office_id" id="" class="form-control select2">
+                                        @foreach ($offices as $office)
+                                        <option value="{{ $office->id }}">{{ $office->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @endif
+
+                                @if(auth()->user()->role == 'super-admin')
+                                <input type="hidden" name="office_id" value="{{ Auth::user()->office->id }}">
+                                @endif
                             </div>
                             <!-- /.card-body -->
 
@@ -94,3 +112,11 @@ Add Office Data
     <!-- /.content -->
 </div>
 @endsection
+
+@push('addon-script')
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+
+<script>
+    $('.select2').select2();
+</script>
+@endpush
