@@ -38,9 +38,6 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], functio
     //User Farm
     Route::resource('user-farm', UserFarmController::class);
 
-    //Office
-    Route::resource('office', OfficeController::class);
-
     //Farm
     Route::resource('farm', FarmController::class);
 });
@@ -48,6 +45,9 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], functio
 Route::group(['middleware' => ['auth', 'checkRole:master']], function(){
     //User
     Route::resource('user-all', UserController::class);
+
+    //Office
+    Route::resource('office', OfficeController::class);
 });
 
 

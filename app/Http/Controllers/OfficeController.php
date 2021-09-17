@@ -82,7 +82,7 @@ class OfficeController extends Controller
 
         return view('pages.admin.office.edit', [
             'office' => $office
-        ]);//
+        ]);
     }
 
     /**

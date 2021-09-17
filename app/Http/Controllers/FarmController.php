@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FarmRequest;
+use App\Http\Requests\FarmUpdateRequest;
 use App\Models\Farm;
 use App\Models\Office;
 use Illuminate\Http\Request;
@@ -97,7 +98,22 @@ class FarmController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $user = auth()->user();
+        $farm = Farm::findOrFail($id);
+
+        if($user['role'] == 'master'){
+            $offices = Office::all();
+        }else if($user['role'] == 'super-admin'){
+            $office_id = auth()->user()->office->id;
+
+            $offices = Office::where('id', $office_id)->get();
+        }
+        
+        return view('pages.admin.farm.edit', [
+            'farm' => $farm,
+            'offices' => $offices
+        ]);
     }
 
     /**
@@ -107,9 +123,14 @@ class FarmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FarmUpdateRequest $request, Farm $farm)
     {
-        //
+        $data = $request->all();
+
+        $farm->update($data);
+
+        Alert::success('Success', 'Data Farm Successfully Updated');
+        return redirect()->route('farm.index');
     }
 
     /**
@@ -118,8 +139,10 @@ class FarmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Farm $farm)
     {
-        //
+        $farm->delete();
+
+        return redirect()->route('farm.index');
     }
 }
