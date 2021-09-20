@@ -1,21 +1,22 @@
 @extends('layouts.admin')
 
 @section('title')
-Users
+Animal
 @endsection
 
 @section('content')
 <div class="content-wrapper">
+    @include('sweetalert::alert')
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">User</h1>
+                    <h1 class="m-0">Animal</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">User</a></li>
+                        <li class="breadcrumb-item"><a href="#">Animal</a></li>
                         {{-- @if (auth()->user()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
@@ -35,7 +36,13 @@ Users
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">User Table</h3>
+                            <a href="{{ route('animal.create') }}">
+                                <button type="button" class="btn btn-primary" style="float: right;">
+                                    <i class="fa fa-plus"></i>
+                                    Add Data
+                                </button>
+                            </a>
+                            <h3 class="card-title">Animal Table</h3>
                         </div>
     
                         <div class="card-body">
@@ -43,13 +50,18 @@ Users
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Role</th>
-                                        <th>Office</th>
+                                        <th>Category</th>
                                         <th>Farm</th>
-                                        <th>Email</th>
+                                        <th>Name</th>
+                                        <th>Weight</th>
+                                        <th>Height</th>
+                                        <th>Condition</th>
+                                        <th>Note</th>
+                                        <th>Barcode</th>
                                         <th>Created By</th>
                                         <th>Updated By</th>
+                                        <th>Updated At</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -109,6 +121,12 @@ Users
         ordering: true,
         scrollX: true,
         order:[[0,"DESC"]],
+        columnDefs: [
+                {
+                    "targets": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], // your case first column
+                    "className": "text-center",
+                },
+            ],
         ajax: {
             url: '{!! url()->current() !!}',
         },
@@ -118,24 +136,36 @@ Users
                 searchable : false
             },
             {
-                data: 'name',
-                name: 'name'
-            },
-            {
-                data: 'role',
-                name: 'role'
-            },
-            {
-                data: 'office',
-                name: 'office'
+                data: 'category',
+                name: 'category'
             },
             {
                 data: 'farm',
                 name: 'farm'
             },
             {
-                data: 'email',
-                name: 'email',
+                data: 'name',
+                name: 'name'
+            },
+            {
+                data: 'weight',
+                name: 'weight',
+            },
+            {
+                data: 'height',
+                name: 'height',
+            },
+            {
+                data: 'condition',
+                name: 'condition',
+            },
+            {
+                data: 'note',
+                name: 'note',
+            },
+            {
+                data: 'barcode',
+                name: 'barcode',
             },
             {
                 data: 'created_by',
@@ -144,6 +174,14 @@ Users
             {
                 data: 'updated_by',
                 name: 'updated_by',
+            },
+            {
+                data: 'updated_at',
+                name: 'updated_at',
+            },
+            {
+                data: 'aksi',
+                name: 'aksi',
             },
         ]
     });

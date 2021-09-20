@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\AnimalDetailController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FarmController;
@@ -30,6 +32,16 @@ Auth::routes(['register' => false]);
 Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin,operator']], function(){
     //Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    //Animal
+    Route::resource('animal', AnimalController::class);
+    Route::get('animal/detail/{barcode}', [AnimalDetailController::class, 'index'])->name('animal.detail');
+
+});
+
+Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin']], function(){
+    //Category
+    Route::resource('category', CategoryController::class);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], function(){

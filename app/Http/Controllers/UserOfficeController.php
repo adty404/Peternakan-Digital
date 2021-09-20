@@ -7,6 +7,7 @@ use App\Http\Requests\UserOfficeUpdateRequest;
 use App\Models\Office;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -19,15 +20,19 @@ class UserOfficeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        if (request()->ajax()) {
+        $user = auth()->user();
+
+        if($user['role'] == 'master'){
             $query = User::has('office');
+        }else if($user['role'] == 'super-admin'){
+            $office_code = auth()->user()->office->code;
+
+            $query = User::has('office')->where('code', $office_code);
+        }
+
+        if (request()->ajax()) {
 
             return DataTables::of($query)
             ->addColumn('aksi', 'pages.admin.user_office.action')
@@ -54,8 +59,12 @@ class UserOfficeController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
+
+        $offices = Office::all();
+
         return view('pages.admin.user_office.create', [
-            'offices' => Office::orderBy('id', 'ASC')->get(),
+            'offices' => $offices,
         ]);
     }
 
@@ -100,12 +109,21 @@ class UserOfficeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $user = User::findOrFail($id);
+    {   
+        $user = auth()->user();
+        $user_office = User::findOrFail($id);
+        
+        if($user['role'] == 'master'){
+            $offices = Office::all();
+        }else if($user['role'] == 'super-admin'){
+            $office_id = auth()->user()->office->id;
+
+            $offices = Office::where('id', $office_id)->get();
+        }
 
         return view('pages.admin.user_office.edit', [
-            'user' => $user,
-            'offices' => Office::orderBy('id', 'ASC')->get(),
+            'user' => $user_office,
+            'offices' => $offices,
         ]);
     }
 
@@ -133,15 +151,13 @@ class UserOfficeController extends Controller
             'code' => ['required']
         ]);
 
-        if($request->has('password')){
-            $password = bcrypt($request->password);
-        }else{
-            $password = $user->password;
-        }
-
         $data['name'] = $request->name;
         $data['email'] = $request->email;
-        $data['password'] = $password;
+        if($request->filled('password')){
+            $data['password'] = Hash::make($request->password);
+        }else{
+            $data['password'] = $user->password;
+        }
         $data['created_by'] = $request->created_by;
         $data['updated_by'] = $request->updated_by;
         $data['role'] = 'super-admin';

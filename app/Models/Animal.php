@@ -10,6 +10,8 @@ class Animal extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'animal';
+
     protected $fillable = ['name', 'weight', 'height', 'condition', 'note', 'created_by', 'updated_by'];
 
     protected $hidden = [];
@@ -20,5 +22,13 @@ class Animal extends Model
 
     public function farm(){
         return $this->belongsTo(Farm::class, 'farm_id', 'id');
+    }
+
+    public function cb(){
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+    public function ub(){
+        return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 }

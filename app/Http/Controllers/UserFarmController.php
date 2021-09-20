@@ -6,6 +6,7 @@ use App\Http\Requests\UserFarmRequest;
 use App\Models\Farm;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
@@ -18,8 +19,18 @@ class UserFarmController extends Controller
      */
     public function index()
     {
-        if (request()->ajax()) {
+        $user = auth()->user();
+
+        if($user['role'] == 'master'){
             $query = User::has('farm');
+        }else if($user['role'] == 'super-admin'){
+            $office_id = auth()->user()->office->id;
+            $farm_code = Farm::where('office_id', $office_id)->first();
+
+            $query = User::has('farm')->where('code', $farm_code['code']);
+        }
+
+        if (request()->ajax()) {
 
             return DataTables::of($query)
             ->addColumn('aksi', 'pages.admin.user_farm.action')
@@ -49,8 +60,17 @@ class UserFarmController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
+        
+        if($user['role'] == 'master'){
+            $farms = Farm::orderBy('id', 'ASC')->get();
+        }else if($user['role'] == 'super-admin'){
+            $office_id = auth()->user()->office->id;
+            $farms = Farm::where('office_id', $office_id)->get();
+        }
+
         return view('pages.admin.user_farm.create', [
-            'farms' => Farm::orderBy('id', 'ASC')->get(),
+            'farms' => $farms,
         ]);
     }
 
@@ -98,9 +118,18 @@ class UserFarmController extends Controller
     {
         $user = User::findOrFail($id);
 
+        $user_auth = auth()->user();
+        
+        if($user_auth['role'] == 'master'){
+            $farms = Farm::orderBy('id', 'ASC')->get();
+        }else if($user_auth['role'] == 'super-admin'){
+            $office_id = auth()->user()->office->id;
+            $farms = Farm::where('office_id', $office_id)->get();
+        }
+        
         return view('pages.admin.user_farm.edit', [
             'user' => $user,
-            'farms' => Farm::orderBy('id', 'ASC')->get(),
+            'farms' => $farms,
         ]);
     }
 
@@ -128,15 +157,13 @@ class UserFarmController extends Controller
             'code' => ['required']
         ]);
 
-        if($request->has('password')){
-            $password = bcrypt($request->password);
-        }else{
-            $password = $user->password;
-        }
-
         $data['name'] = $request->name;
         $data['email'] = $request->email;
-        $data['password'] = $password;
+        if($request->filled('password')){
+            $data['password'] = Hash::make($request->password);
+        }else{
+            $data['password'] = $user->password;
+        }
         $data['created_by'] = $request->created_by;
         $data['updated_by'] = $request->updated_by;
         $data['role'] = $request->role;

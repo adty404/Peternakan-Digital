@@ -114,6 +114,8 @@ Farm
         processing: true,
         serverSide: true,
         ordering: true,
+        scrollX: true,
+        order:[[0,"DESC"]],
         url: '{!! url()->current() !!}',
         columns: [{ 
                 data: 'DT_RowIndex', 

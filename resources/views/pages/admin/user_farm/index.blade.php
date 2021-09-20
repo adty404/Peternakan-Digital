@@ -115,6 +115,8 @@ Users Farm
         processing: true,
         serverSide: true,
         ordering: true,
+        scrollX: true,
+        order:[[0,"DESC"]],
         ajax: {
             url: '{!! url()->current() !!}',
         },

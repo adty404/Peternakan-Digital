@@ -26,6 +26,7 @@
                         </p>
                     </a>
                 </li>
+                @if(auth()->user()->role == 'master' || auth()->user()->role == 'super-admin')
                 <li class="nav-item {{ (request()->is('user*')) ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ (request()->is('user*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
@@ -35,12 +36,14 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        @if(auth()->user()->role == 'master')
                         <li class="nav-item">
                             <a href="{{ route('user-all.index') }}" class="nav-link {{ (request()->is('user-all*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All</p>
                             </a>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a href="{{ route('user-office.index') }}" class="nav-link {{ (request()->is('user-office*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
@@ -55,6 +58,8 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+                @if(auth()->user()->role == 'master')
                 <li class="nav-item">
                     <a href="{{ route('office.index') }}"
                         class="nav-link {{ (request()->is('office*')) ? 'active' : '' }}">
@@ -64,6 +69,8 @@
                         </p>
                     </a>
                 </li>
+                @endif
+                @if(auth()->user()->role == 'master' || auth()->user()->role == 'super-admin')
                 <li class="nav-item">
                     <a href="{{ route('farm.index') }}" class="nav-link {{ (request()->is('farm*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-alt"></i>
@@ -72,6 +79,8 @@
                         </p>
                     </a>
                 </li>
+                @endif
+                @if(auth()->user()->role == 'master' || auth()->user()->role == 'super-admin' || auth()->user()->role == 'admin')
                 <li class="nav-item">
                     <a href="{{ route('category.index') }}" class="nav-link {{ (request()->is('category*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-alt"></i>
@@ -80,8 +89,9 @@
                         </p>
                     </a>
                 </li>
+                @endif
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link">
+                    <a href="{{ route('animal.index') }}" class="nav-link {{ (request()->is('animal*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-alt"></i>
                         <p>
                             Animal

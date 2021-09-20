@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Add User Office Data
+Add Animal Data
 @endsection
 
 @push('prepend-style')
@@ -15,11 +15,11 @@ Add User Office Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">User Office</h1>
+                    <h1 class="m-0">Animal</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">User Office</a></li>
+                        <li class="breadcrumb-item"><a href="#">Animal</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
@@ -53,9 +53,17 @@ Add User Office Data
                             </ul>
                         </div>
                         @endif
-                        <form method="POST" action="{{ route('user-office.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('animal.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
+                                <div class="form-group">
+                                    <label for="">Category</label>
+                                    <select name="category_id" id="" class="form-control select2">
+                                        @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" class="form-control" id="name"
@@ -71,21 +79,6 @@ Add User Office Data
                                     <input type="password" name="password" class="form-control" id="password"
                                         placeholder="Password" value="{{ old('password') }}" required>
                                 </div>
-                                @if(auth()->user()->role == 'master')
-                                <div class="form-group">
-                                    <label for="">Office</label>
-                                    <select name="office_id" id="" class="form-control select2">
-                                        @foreach ($offices as $office)
-                                        <option value="{{ $office->id }}">{{ $office->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                @endif
-
-                                @if(auth()->user()->role == 'super-admin')
-                                <input type="hidden" name="office_id" value="{{ Auth::user()->office->id }}">
-                                @endif
-
                                 <input type="hidden" name="created_by" value="{{ Auth::user()->id }}">
                                 <input type="hidden" name="updated_by" value="{{ Auth::user()->id }}">
                             </div>
