@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FarmController;
 use App\Http\Controllers\OfficeController;
@@ -40,6 +41,9 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], functio
 
     //Farm
     Route::resource('farm', FarmController::class);
+
+    //Category
+    Route::resource('category', CategoryController::class);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:master']], function(){
