@@ -36,12 +36,14 @@ Animal
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
+                            @if (auth()->user()->role != 'operator')
                             <a href="{{ route('animal.create') }}">
                                 <button type="button" class="btn btn-primary" style="float: right;">
                                     <i class="fa fa-plus"></i>
                                     Add Data
                                 </button>
                             </a>
+                            @endif
                             <h3 class="card-title">Animal Table</h3>
                         </div>
     

@@ -144,7 +144,6 @@ class AnimalController extends Controller
      */
     public function edit($id)
     {
-        dd($id);
         $user = auth()->user();
         $animal = Animal::findOrFail($id);
 
