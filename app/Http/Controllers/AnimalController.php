@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AnimalRequest;
+use App\Http\Requests\AnimalUpdateRequest;
 use App\Models\Animal;
 use App\Models\Category;
 use App\Models\Farm;
+use App\Models\Office;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -26,10 +28,7 @@ class AnimalController extends Controller
         if($user['role'] == 'master'){
             $query = Animal::query();
         }else if($user['role'] == 'super-admin'){
-            $office_id = auth()->user()->office->id;
-            $farm_id = Farm::where('office_id', $office_id)->first();
-
-            $query = Animal::where('farm_id', $farm_id['id']);
+            $query = auth()->user()->office->animal;
         }else if($user['role'] == 'admin' || $user['role'] == 'operator'){
             $farm_id = auth()->user()->farm->id;
 
@@ -45,6 +44,9 @@ class AnimalController extends Controller
             })
             ->addColumn('farm', function($animal){
                 return $animal->farm['name'];
+            })
+            ->addColumn('name', function($animal){
+                return $animal['name'];
             })
             ->addColumn('created_by', function($animal){
                 return $animal->cb['name'];
@@ -142,7 +144,28 @@ class AnimalController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd($id);
+        $user = auth()->user();
+        $animal = Animal::findOrFail($id);
+
+        if($user['role'] == 'master'){
+            $farms = Farm::all();
+        }else if($user['role'] == 'super-admin'){
+            $office_id = auth()->user()->office->id;
+            $farms = Farm::where('office_id', $office_id)->get();
+        }else if($user['role'] == 'admin' || $user['role'] == 'operator'){
+            $office_id = auth()->user()->farm->office_id;
+
+            $farms = Farm::where('office_id', $office_id)->get();
+        }
+
+        $categories = Category::all();
+
+        return view('pages.admin.animal.edit', [
+            'categories' => $categories,
+            'farms' => $farms,
+            'animal' => $animal,
+        ]);
     }
 
     /**
@@ -152,9 +175,14 @@ class AnimalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AnimalUpdateRequest $request, Animal $animal)
     {
-        //
+        $data = $request->all();
+
+        $animal->update($data);
+
+        Alert::success('Success', 'Data Animal Successfully Updated');
+        return redirect()->route('animal.index');
     }
 
     /**
@@ -163,8 +191,10 @@ class AnimalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Animal $animal)
     {
-        //
+        $animal->delete();
+
+        return redirect()->route('animal.index');
     }
 }

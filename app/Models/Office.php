@@ -15,4 +15,12 @@ class Office extends Model
     protected $fillable = ['code', 'name', 'address', 'email', 'phone', 'pic'];
 
     protected $hidden = [];
+
+    public function animal(){
+        return $this->hasManyThrough(Animal::class, Farm::class);
+    }
+
+    public function farm(){
+        return $this->hasMany(Farm::class);
+    }
 }

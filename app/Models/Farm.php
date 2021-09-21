@@ -16,7 +16,12 @@ class Farm extends Model
 
     protected $hidden = [];
 
+    public function animal(){
+        return $this->hasMany(Animal::class, 'farm_id');
+    }
+    
     public function office(){
         return $this->belongsTo(Office::class, 'office_id', 'id');
     }
+
 }

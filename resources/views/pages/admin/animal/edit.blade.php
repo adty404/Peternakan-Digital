@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Edit User Office Data
+Edit Animal Data
 @endsection
 
 @push('prepend-style')
@@ -15,11 +15,11 @@ Edit User Office Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">User Office</h1>
+                    <h1 class="m-0">Animal</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">User Office</a></li>
+                        <li class="breadcrumb-item"><a href="#">Animal</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
@@ -38,7 +38,7 @@ Edit User Office Data
                 <!-- left column -->
                 <div class="col-md-12">
                     <!-- general form elements -->
-                    <div class="card card-warning">
+                    <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Edit Data</h3>
                         </div>
@@ -53,42 +53,60 @@ Edit User Office Data
                             </ul>
                         </div>
                         @endif
-                        <form method="POST" action="{{ route('user-office.update', $user->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('animal.update', $animal) }}" enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Name" value="{{ $user->name ?? old('name') }}" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email"
-                                        placeholder="Email" value="{{ $user->email ?? old('email') }}" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" name="password" class="form-control" id="password"
-                                        placeholder="Password" value="">
-                                    <p style="margin-top: 10px; color:grey; text-align:left;">
-                                        <i>*Leave it blank if do not want to change</i> <br />
-                                    </p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Office</label>
-                                    <select name="code" id="" class="form-control select2">
-                                        @foreach ($offices as $office)
-                                            <option
-                                                value="{{ $office->code }}"
-                                                @if ($office->code === $user->code)
-                                                    selected
-                                                @endif
+                                    <label for="">Category</label>
+                                    <select name="category_id" id="" class="form-control select2">
+                                        @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" 
+                                            @if ($category->id === $animal->category_id)
+                                                selected
+                                            @endif
                                             >
-                                                {{ $office->name }}
-                                            </option>
+                                            {{ $category->name }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Farm</label>
+                                    <select name="farm_id" id="" class="form-control select2">
+                                        @foreach ($farms as $farm)
+                                        <option value="{{ $farm->id }}" 
+                                            @if ($farm->id === $animal->farm_id)
+                                                selected
+                                            @endif
+                                            >
+                                            {{ $farm->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" class="form-control" id="name"
+                                        placeholder="Name" value="{{ $animal->name ?? old('name') }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="weight">Weight</label>
+                                    <input type="text" name="weight" class="form-control" id="weight"
+                                        placeholder="Weight" value="{{ $animal->weight ?? old('weight') }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="height">Height</label>
+                                    <input type="text" name="height" class="form-control" id="height"
+                                        placeholder="Height" value="{{ $animal->height ?? old('height') }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="condition">Condition</label>
+                                    <input type="text" name="condition" class="form-control" id="condition"
+                                        placeholder="Condition" value="{{ $animal->condition ?? old('condition') }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="note">Note</label>
+                                    <input type="text" name="note" class="form-control" id="note"
+                                        placeholder="Note" value="{{ $animal->note ?? old('note') }}" required>
                                 </div>
                                 <input type="hidden" name="created_by" value="{{ Auth::user()->id }}">
                                 <input type="hidden" name="updated_by" value="{{ Auth::user()->id }}">
@@ -96,7 +114,7 @@ Edit User Office Data
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-warning">Submit</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </div>
