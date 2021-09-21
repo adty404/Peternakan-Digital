@@ -65,19 +65,37 @@ Add Animal Data
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Farm</label>
+                                    <select name="farm_id" id="" class="form-control select2">
+                                        @foreach ($farms as $farm)
+                                        <option value="{{ $farm->id }}">{{ $farm->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" class="form-control" id="name"
                                         placeholder="Name" value="{{ old('name') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email"
-                                        placeholder="Email" value="{{ old('email') }}" required>
+                                    <label for="weight">Weight</label>
+                                    <input type="text" name="weight" class="form-control" id="weight"
+                                        placeholder="Weight" value="{{ old('weight') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" name="password" class="form-control" id="password"
-                                        placeholder="Password" value="{{ old('password') }}" required>
+                                    <label for="height">Height</label>
+                                    <input type="text" name="height" class="form-control" id="height"
+                                        placeholder="Height" value="{{ old('height') }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="condition">Condition</label>
+                                    <input type="text" name="condition" class="form-control" id="condition"
+                                        placeholder="Condition" value="{{ old('condition') }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="note">Note</label>
+                                    <input type="text" name="note" class="form-control" id="note"
+                                        placeholder="Note" value="{{ old('note') }}" required>
                                 </div>
                                 <input type="hidden" name="created_by" value="{{ Auth::user()->id }}">
                                 <input type="hidden" name="updated_by" value="{{ Auth::user()->id }}">

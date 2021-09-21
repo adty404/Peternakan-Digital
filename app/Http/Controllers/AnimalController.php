@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AnimalRequest;
 use App\Models\Animal;
+use App\Models\Category;
 use App\Models\Farm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Yajra\DataTables\DataTables;
 
@@ -78,7 +82,25 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        //
+        $user = auth()->user();
+
+        if($user['role'] == 'master'){
+            $farms = Farm::all();
+        }else if($user['role'] == 'super-admin'){
+            $office_id = auth()->user()->office->id;
+            $farms = Farm::where('office_id', $office_id)->get();
+        }else if($user['role'] == 'admin' || $user['role'] == 'operator'){
+            $office_id = auth()->user()->farm->office_id;
+
+            $farms = Farm::where('office_id', $office_id)->get();
+        }
+
+        $categories = Category::all();
+
+        return view('pages.admin.animal.create', [
+            'categories' => $categories,
+            'farms' => $farms,
+        ]);
     }
 
     /**
@@ -87,9 +109,18 @@ class AnimalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnimalRequest $request)
     {
-        //
+        // dd($request->all());
+        
+        $data = $request->all();
+
+        $data['barcode'] = Str::random(8);
+
+        Animal::create($data);
+
+        Alert::success('Success', 'Data Animal Successfully Created');
+        return redirect()->route('animal.index');
     }
 
     /**
