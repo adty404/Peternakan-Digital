@@ -9,8 +9,6 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
-<!-- ChartJS -->
-<script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
 <!-- Sparkline -->
 <script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
 <!-- daterangepicker -->
