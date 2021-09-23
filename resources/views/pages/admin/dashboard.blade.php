@@ -18,6 +18,6 @@ Dashboard
 @endif
 
 @if (auth()->user()->role == 'operator')
-    @include('pages.admin.dashboard.admin')
+    @include('pages.admin.dashboard.operator')
 @endif
 @endsection

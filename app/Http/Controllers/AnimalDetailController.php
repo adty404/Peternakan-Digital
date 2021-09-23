@@ -14,4 +14,10 @@ class AnimalDetailController extends Controller
             'animal' => $animal
         ]);
     }
+
+    public function barcode($barcode){
+        return view('pages.admin.animal_detail.barcode', [
+            'link' => route('animal.detail', ['barcode' => $barcode]),
+        ]);
+    }
 }

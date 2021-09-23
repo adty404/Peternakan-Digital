@@ -44,6 +44,8 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin,opera
     //Animal Detail
     Route::get('animal/detail/{barcode}', [AnimalDetailController::class, 'index'])->name('animal.detail');
 
+    //Animal Barcode
+    Route::get('animal/barcode/{barcode}', [AnimalDetailController::class, 'barcode'])->name('animal.barcode');
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin']], function(){
