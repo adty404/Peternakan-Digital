@@ -48,7 +48,7 @@ Animal
                         </div>
     
                         <div class="card-body">
-                            <table class="table table-bordered table-hover" id="crudTable">
+                            <table class="table table-bordered table-hover" id="crudTable" width="100%">
                                 <thead>
                                     <tr>
                                         <th>#</th>
