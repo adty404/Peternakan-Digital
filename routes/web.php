@@ -64,9 +64,6 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], functio
 
     //Farm
     Route::resource('farm', FarmController::class);
-
-    //Category
-    Route::resource('category', CategoryController::class);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:master']], function(){

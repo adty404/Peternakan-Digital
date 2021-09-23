@@ -45,9 +45,6 @@ class AnimalController extends Controller
             ->addColumn('farm', function($animal){
                 return $animal->farm['name'];
             })
-            ->addColumn('name', function($animal){
-                return $animal['name'];
-            })
             ->addColumn('created_by', function($animal){
                 return $animal->cb['name'];
             })
@@ -61,17 +58,13 @@ class AnimalController extends Controller
                 $barcode_link = route('animal.detail', ['barcode' => $animal['barcode']]);
                 $barcode = QrCode::format('png')->size(500)->generate($barcode_link);
 
-                // return '
-                //     <a href="data:image/png;base64, '.base64_encode($barcode).'" target="_blank"><img src="data:image/png;base64, '.base64_encode($barcode).'"></a>
-                // ';
-
                 return '
                     <a href="data:image/png;base64, '.base64_encode($barcode).'" target="_blank" style="color:black; font-size:20px;"><i class="fa fa-qrcode"></i></a>
                     <span style="color:white; font-size:0px;">'. $barcode_link .'</span>
                 ';
             })
             ->addIndexColumn()
-            ->rawColumns(['aksi', 'barcode'])
+            ->rawColumns(['category', 'farm', 'created_by', 'updated_by', 'updated_at', 'aksi', 'barcode'])
             ->make(true);
         }
         return view('pages.admin.animal.index');

@@ -122,7 +122,6 @@ Animal
         serverSide: true,
         ordering: true,
         scrollX: true,
-        order:[[0,"DESC"]],
         columnDefs: [
                 {
                     "targets": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], // your case first column
@@ -132,6 +131,26 @@ Animal
         ajax: {
             url: '{!! url()->current() !!}',
         },
+        dom: "Bfrtip",
+            buttons: [
+                $.extend(true, {}, {
+                    extend: 'csvHtml5',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                    },
+                    className: 'btn btn-primary',
+                    text: 'CSV',
+                }),
+                $.extend(true, {}, {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                        // stripHtml: false
+                    },
+                    className: 'btn btn-primary',
+                    text: 'EXCEL',
+                }),
+            ],
         columns: [{ 
                 data: 'DT_RowIndex', 
                 orderable: false, 

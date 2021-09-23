@@ -74,16 +74,16 @@ Add User Office Data
                                 @if(auth()->user()->role == 'master')
                                 <div class="form-group">
                                     <label for="">Office</label>
-                                    <select name="office_id" id="" class="form-control select2">
+                                    <select name="code" id="" class="form-control select2">
                                         @foreach ($offices as $office)
-                                        <option value="{{ $office->id }}">{{ $office->name }}</option>
+                                        <option value="{{ $office->code }}">{{ $office->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 @endif
 
                                 @if(auth()->user()->role == 'super-admin')
-                                <input type="hidden" name="office_id" value="{{ Auth::user()->office->id }}">
+                                <input type="hidden" name="code" value="{{ Auth::user()->office->code }}">
                                 @endif
 
                                 <input type="hidden" name="created_by" value="{{ Auth::user()->id }}">
