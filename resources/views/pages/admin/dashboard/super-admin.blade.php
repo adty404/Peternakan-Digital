@@ -36,7 +36,7 @@
                         <div class="icon">
                             <i class="fa fa-user"></i>
                         </div>
-                        <a href="{{ route('user-all.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('user-office.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -51,7 +51,7 @@
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="{{ route('office.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('farm.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -66,7 +66,7 @@
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('category.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
