@@ -96,7 +96,7 @@ Edit User Farm Data
                                         @endforeach
                                     </select>
                                 </div>
-                                <input type="hidden" name="created_by" value="{{ Auth::user()->id }}">
+                                {{-- <input type="hidden" name="created_by" value="{{ Auth::user()->id }}"> --}}
                                 <input type="hidden" name="updated_by" value="{{ Auth::user()->id }}">
                             </div>
                             <!-- /.card-body -->

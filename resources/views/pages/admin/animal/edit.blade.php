@@ -108,7 +108,7 @@ Edit Animal Data
                                     <input type="text" name="note" class="form-control" id="note"
                                         placeholder="Note" value="{{ $animal->note ?? old('note') }}" required>
                                 </div>
-                                <input type="hidden" name="created_by" value="{{ Auth::user()->id }}">
+                                {{-- <input type="hidden" name="created_by" value="{{ Auth::user()->id }}"> --}}
                                 <input type="hidden" name="updated_by" value="{{ Auth::user()->id }}">
                             </div>
                             <!-- /.card-body -->

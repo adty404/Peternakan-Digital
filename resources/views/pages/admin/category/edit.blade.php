@@ -58,7 +58,7 @@ Edit Category Data
                                     <input type="text" name="name" class="form-control" id="name"
                                         placeholder="Name" value="{{ $category->name ?? old('name') }}" required>
                                 </div>
-                                <input type="hidden" name="created_by" value="{{ Auth::user()->id }}">
+                                {{-- <input type="hidden" name="created_by" value="{{ Auth::user()->id }}"> --}}
                                 <input type="hidden" name="updated_by" value="{{ Auth::user()->id }}">
                             </div>
                             <!-- /.card-body -->

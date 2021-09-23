@@ -151,7 +151,7 @@ class UserFarmController extends Controller
             // email_verified_at
             'password' => ['nullable','min:6'],
             // remember token
-            'created_by' => ['required', 'numeric'],
+            'created_by' => ['nullable', 'numeric'],
             'updated_by' => ['required', 'numeric'],
             'role' => ['required'],
             'code' => ['required']

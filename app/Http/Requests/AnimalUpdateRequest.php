@@ -31,7 +31,7 @@ class AnimalUpdateRequest extends FormRequest
             'height' => ['required', 'numeric'],
             'condition' => ['required', 'max:255'],
             'note' => ['required', 'max:255'],
-            'created_by' => ['required', 'numeric'],
+            'created_by' => ['nullable', 'numeric'],
             'updated_by' => ['required', 'numeric'],
             //barcode
         ];
