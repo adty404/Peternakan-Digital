@@ -34,7 +34,7 @@
                             <p>Office</p>
                         </div>
                         <div class="icon">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-building"></i>
                         </div>
                         <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -49,7 +49,7 @@
                             <p>Farms</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="fa fa-store"></i>
                         </div>
                         <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -64,7 +64,7 @@
                             <p>Categories</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="fa fa-clipboard-list"></i>
                         </div>
                         <a href="{{ route('category.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -79,7 +79,7 @@
                             <p>Animals</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
+                            <i class="fa fa-horse"></i>
                         </div>
                         <a href="{{ route('animal.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
                     </div>

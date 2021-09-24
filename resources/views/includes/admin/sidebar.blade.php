@@ -63,7 +63,7 @@
                 <li class="nav-item">
                     <a href="{{ route('office.index') }}"
                         class="nav-link {{ (request()->is('office*')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user-alt"></i>
+                        <i class="nav-icon fas fa-building"></i>
                         <p>
                             Office
                         </p>
@@ -73,7 +73,7 @@
                 @if(auth()->user()->role == 'master' || auth()->user()->role == 'super-admin')
                 <li class="nav-item">
                     <a href="{{ route('farm.index') }}" class="nav-link {{ (request()->is('farm*')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user-alt"></i>
+                        <i class="nav-icon fas fa-store"></i>
                         <p>
                             Farm
                         </p>
@@ -83,7 +83,7 @@
                 @if(auth()->user()->role == 'master' || auth()->user()->role == 'super-admin' || auth()->user()->role == 'admin')
                 <li class="nav-item">
                     <a href="{{ route('category.index') }}" class="nav-link {{ (request()->is('category*')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user-alt"></i>
+                        <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
                             Category
                         </p>
@@ -92,7 +92,7 @@
                 @endif
                 <li class="nav-item">
                     <a href="{{ route('animal.index') }}" class="nav-link {{ (request()->is('animal*')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user-alt"></i>
+                        <i class="nav-icon fas fa-horse"></i>
                         <p>
                             Animal
                         </p>
