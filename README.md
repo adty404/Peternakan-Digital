@@ -1,4 +1,4 @@
-# ![Laravel Example App](logo.png)
+# ![Aplikasi Peternakan](logo.png)
 
 > ### Aplikasi Peternakan Digital dengan QRCode dan memiliki 4 roles: Master, Super Admin, Admin, dan Operator.
 
