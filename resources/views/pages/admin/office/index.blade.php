@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Office
+Perusahaan
 @endsection
 
 @section('content')
@@ -12,11 +12,11 @@ Office
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Office</h1>
+                    <h1 class="m-0">Perusahaan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Office</a></li>
+                        <li class="breadcrumb-item"><a href="#">Perusahaan</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
@@ -39,10 +39,10 @@ Office
                             <a href="{{ route('office.create') }}">
                                 <button type="button" class="btn btn-primary" style="float: right;">
                                     <i class="fa fa-plus"></i>
-                                    Add Data
+                                    Tambah Data
                                 </button>
                             </a>
-                            <h3 class="card-title">Office Table</h3>
+                            <h3 class="card-title">Tabel Perusahaan</h3>
                         </div>
     
                         <div class="card-body">
@@ -50,10 +50,10 @@ Office
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Address</th>
+                                        <th>Nama</th>
+                                        <th>Alamat</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
+                                        <th>Nomor HP</th>
                                         <th>Pic</th>
                                         <th>Aksi</th>
                                     </tr>

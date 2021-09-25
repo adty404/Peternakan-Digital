@@ -1,5 +1,9 @@
 @extends('layouts.auth')
 
+@section('title')
+    Login
+@endsection
+
 @section('content')
 <!-- /.login-logo -->
 <div class="card card-outline card-primary">

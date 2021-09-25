@@ -31,7 +31,7 @@
                         <div class="inner">
                             <h3>{{ $one }}</h3>
 
-                            <p>Users Office</p>
+                            <p>Users Perusahaan</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-user"></i>
@@ -46,7 +46,7 @@
                         <div class="inner">
                             <h3>{{ $two }}</h3>
 
-                            <p>Farms</p>
+                            <p>Peternakan</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-store"></i>
@@ -61,7 +61,7 @@
                         <div class="inner">
                             <h3>{{ $three }}</h3>
 
-                            <p>Categories</p>
+                            <p>Kategori</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-clipboard-list"></i>
@@ -76,7 +76,7 @@
                         <div class="inner">
                             <h3>{{ $four }}</h3>
 
-                            <p>Animals</p>
+                            <p>Hewan</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-horse"></i>

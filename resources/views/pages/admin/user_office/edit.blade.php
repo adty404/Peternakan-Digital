@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Edit User Office Data
+Ubah Data User Perusahaan
 @endsection
 
 @push('prepend-style')
@@ -15,15 +15,15 @@ Edit User Office Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">User Office</h1>
+                    <h1 class="m-0">User Perusahaan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">User Office</a></li>
+                        <li class="breadcrumb-item"><a href="#">User Perusahaan</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
-                        <li class="breadcrumb-item active">Edit Data</li>
+                        <li class="breadcrumb-item active">Ubah Data</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -40,7 +40,7 @@ Edit User Office Data
                     <!-- general form elements -->
                     <div class="card card-warning">
                         <div class="card-header">
-                            <h3 class="card-title">Edit Data</h3>
+                            <h3 class="card-title">Ubah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -58,7 +58,7 @@ Edit User Office Data
                             @method("PUT")
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">Nama</label>
                                     <input type="text" name="name" class="form-control" id="name"
                                         placeholder="Name" value="{{ $user->name ?? old('name') }}" required>
                                 </div>
@@ -72,11 +72,11 @@ Edit User Office Data
                                     <input type="password" name="password" class="form-control" id="password"
                                         placeholder="Password" value="">
                                     <p style="margin-top: 10px; color:grey; text-align:left;">
-                                        <i>*Leave it blank if do not want to change</i> <br />
+                                        <i>*Kosongkan apabila tidak ingin mengubah password</i> <br />
                                     </p>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Office</label>
+                                    <label for="">Perusahaan</label>
                                     <select name="code" id="" class="form-control select2">
                                         @foreach ($offices as $office)
                                             <option
@@ -96,7 +96,7 @@ Edit User Office Data
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-warning">Submit</button>
+                                <button type="submit" class="btn btn-warning">Kirim</button>
                             </div>
                         </form>
                     </div>

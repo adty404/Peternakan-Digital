@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Edit Category Data
+Ubah Data Kategori
 @endsection
 
 @section('content')
@@ -11,15 +11,15 @@ Edit Category Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Category</h1>
+                    <h1 class="m-0">Kategori</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Category</a></li>
+                        <li class="breadcrumb-item"><a href="#">Kategori</a></li>
                         {{-- @if (auth()->category()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
-                        <li class="breadcrumb-item active">Edit Data</li>
+                        <li class="breadcrumb-item active">Ubah Data</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -36,7 +36,7 @@ Edit Category Data
                     <!-- general form elements -->
                     <div class="card card-warning">
                         <div class="card-header">
-                            <h3 class="card-title">Edit Data</h3>
+                            <h3 class="card-title">Ubah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -54,7 +54,7 @@ Edit Category Data
                             @method("PUT")
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">Nama</label>
                                     <input type="text" name="name" class="form-control" id="name"
                                         placeholder="Name" value="{{ $category->name ?? old('name') }}" required>
                                 </div>
@@ -64,7 +64,7 @@ Edit Category Data
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-warning">Submit</button>
+                                <button type="submit" class="btn btn-warning">Kirim</button>
                             </div>
                         </form>
                     </div>

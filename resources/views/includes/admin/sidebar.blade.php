@@ -40,20 +40,20 @@
                         <li class="nav-item">
                             <a href="{{ route('user-all.index') }}" class="nav-link {{ (request()->is('user-all*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>All</p>
+                                <p>Semua</p>
                             </a>
                         </li>
                         @endif
                         <li class="nav-item">
                             <a href="{{ route('user-office.index') }}" class="nav-link {{ (request()->is('user-office*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Office</p>
+                                <p>Perusahaan</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('user-farm.index') }}" class="nav-link {{ (request()->is('user-farm*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Farm</p>
+                                <p>Peternakan</p>
                             </a>
                         </li>
                     </ul>
@@ -65,7 +65,7 @@
                         class="nav-link {{ (request()->is('office*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-building"></i>
                         <p>
-                            Office
+                            Perusahaan
                         </p>
                     </a>
                 </li>
@@ -75,7 +75,7 @@
                     <a href="{{ route('farm.index') }}" class="nav-link {{ (request()->is('farm*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-store"></i>
                         <p>
-                            Farm
+                            Peternakan
                         </p>
                     </a>
                 </li>
@@ -85,7 +85,7 @@
                     <a href="{{ route('category.index') }}" class="nav-link {{ (request()->is('category*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
-                            Category
+                            Kategori
                         </p>
                     </a>
                 </li>
@@ -94,7 +94,7 @@
                     <a href="{{ route('animal.index') }}" class="nav-link {{ (request()->is('animal*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-horse"></i>
                         <p>
-                            Animal
+                            Hewan
                         </p>
                     </a>
                 </li>

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Add Animal Data
+Tambah Data Hewan
 @endsection
 
 @push('prepend-style')
@@ -15,15 +15,15 @@ Add Animal Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Animal</h1>
+                    <h1 class="m-0">Hewan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Animal</a></li>
+                        <li class="breadcrumb-item"><a href="#">Hewan</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
-                        <li class="breadcrumb-item active">Add Data</li>
+                        <li class="breadcrumb-item active">Tambah Data</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -40,7 +40,7 @@ Add Animal Data
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Add Data</h3>
+                            <h3 class="card-title">Tambah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -57,7 +57,7 @@ Add Animal Data
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="">Category</label>
+                                    <label for="">Kategori</label>
                                     <select name="category_id" id="" class="form-control select2">
                                         @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -65,7 +65,7 @@ Add Animal Data
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Farm</label>
+                                    <label for="">Peternakan</label>
                                     <select name="farm_id" id="" class="form-control select2">
                                         @foreach ($farms as $farm)
                                         <option value="{{ $farm->id }}">{{ $farm->name }}</option>
@@ -73,27 +73,27 @@ Add Animal Data
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">Nama</label>
                                     <input type="text" name="name" class="form-control" id="name"
                                         placeholder="Name" value="{{ old('name') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="weight">Weight</label>
+                                    <label for="weight">Berat</label>
                                     <input type="text" name="weight" class="form-control" id="weight"
                                         placeholder="Weight" value="{{ old('weight') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="height">Height</label>
+                                    <label for="height">Tinggi</label>
                                     <input type="text" name="height" class="form-control" id="height"
                                         placeholder="Height" value="{{ old('height') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="condition">Condition</label>
+                                    <label for="condition">Kondisi</label>
                                     <input type="text" name="condition" class="form-control" id="condition"
                                         placeholder="Condition" value="{{ old('condition') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="note">Note</label>
+                                    <label for="note">Keterangan</label>
                                     <input type="text" name="note" class="form-control" id="note"
                                         placeholder="Note" value="{{ old('note') }}" required>
                                 </div>
@@ -103,7 +103,7 @@ Add Animal Data
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Kirim</button>
                             </div>
                         </form>
                     </div>

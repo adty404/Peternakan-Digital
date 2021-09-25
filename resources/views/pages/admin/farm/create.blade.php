@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Add Farm Data
+Tambah Data Petenakan
 @endsection
 
 @push('prepend-style')
@@ -15,15 +15,15 @@ Add Farm Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Farm</h1>
+                    <h1 class="m-0">Peternakan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Farm</a></li>
+                        <li class="breadcrumb-item"><a href="#">Peternakan</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
-                        <li class="breadcrumb-item active">Add Data</li>
+                        <li class="breadcrumb-item active">Tambah Data</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -40,7 +40,7 @@ Add Farm Data
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Add Data</h3>
+                            <h3 class="card-title">Tambah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -57,12 +57,12 @@ Add Farm Data
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">Nama</label>
                                     <input type="text" name="name" class="form-control" id="name"
                                         placeholder="Name" value="{{ old('name') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="address">Address</label>
+                                    <label for="address">Alamat</label>
                                     <textarea name="address" id="address" rows="3" class="form-control" placeholder="Address">{{ old('address') }}</textarea>
                                 </div>
                                 <div class="form-group">
@@ -71,7 +71,7 @@ Add Farm Data
                                         placeholder="Email" value="{{ old('email') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="phone">Phone</label>
+                                    <label for="phone">Nomor HP</label>
                                     <input type="number" name="phone" class="form-control" id="phone"
                                         placeholder="Phone" value="{{ old('phone') }}" required>
                                 </div>
@@ -82,7 +82,7 @@ Add Farm Data
                                 </div>
                                 @if(auth()->user()->role == 'master')
                                 <div class="form-group">
-                                    <label for="">Office</label>
+                                    <label for="">Perusahaan</label>
                                     <select name="office_id" id="" class="form-control select2">
                                         @foreach ($offices as $office)
                                         <option value="{{ $office->id }}">{{ $office->name }}</option>
@@ -98,7 +98,7 @@ Add Farm Data
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Kirim</button>
                             </div>
                         </form>
                     </div>

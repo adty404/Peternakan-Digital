@@ -60,7 +60,7 @@ class CategoryController extends Controller
 
         Category::create($data);
 
-        Alert::success('Success', 'Data Category Successfully Created');
+        Alert::success('Success', 'Berhasil menambahkan data Kategori');
         return redirect()->route('category.index');
     }
 
@@ -107,7 +107,7 @@ class CategoryController extends Controller
 
         $category->update($data);
 
-        Alert::success('Success', 'Data Category Successfully Updated');
+        Alert::success('Success', 'Berhasil mengubah data Kategori');
         return redirect()->route('category.index');
     }
 

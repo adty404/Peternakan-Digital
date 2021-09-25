@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Add Office Data
+Tambah Data Perusahan
 @endsection
 
 @section('content')
@@ -11,15 +11,15 @@ Add Office Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Office</h1>
+                    <h1 class="m-0">Perusahaan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Office</a></li>
+                        <li class="breadcrumb-item"><a href="#">Perusahaan</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
-                        <li class="breadcrumb-item active">Add Data</li>
+                        <li class="breadcrumb-item active">Tambah Data</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -36,7 +36,7 @@ Add Office Data
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Add Data</h3>
+                            <h3 class="card-title">Tambah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -53,12 +53,12 @@ Add Office Data
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">Nama</label>
                                     <input type="text" name="name" class="form-control" id="name"
                                         placeholder="Name" value="{{ old('name') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="address">Address</label>
+                                    <label for="address">Alamat</label>
                                     <textarea name="address" id="address" rows="3" class="form-control" placeholder="Address">{{ old('address') }}</textarea>
                                 </div>
                                 <div class="form-group">
@@ -67,7 +67,7 @@ Add Office Data
                                         placeholder="Email" value="{{ old('email') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="phone">Phone</label>
+                                    <label for="phone">Nomor HP</label>
                                     <input type="number" name="phone" class="form-control" id="phone"
                                         placeholder="Phone" value="{{ old('phone') }}" required>
                                 </div>
@@ -80,7 +80,7 @@ Add Office Data
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Kirim</button>
                             </div>
                         </form>
                     </div>

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Add User Office Data
+Tambah Data User Perusahaan
 @endsection
 
 @push('prepend-style')
@@ -15,15 +15,15 @@ Add User Office Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">User Office</h1>
+                    <h1 class="m-0">User Perusahaan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">User Office</a></li>
+                        <li class="breadcrumb-item"><a href="#">User Perusahaan</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
-                        <li class="breadcrumb-item active">Add Data</li>
+                        <li class="breadcrumb-item active">Tambah Data</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -40,7 +40,7 @@ Add User Office Data
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Add Data</h3>
+                            <h3 class="card-title">Tambah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -57,7 +57,7 @@ Add User Office Data
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">Nama</label>
                                     <input type="text" name="name" class="form-control" id="name"
                                         placeholder="Name" value="{{ old('name') }}" required>
                                 </div>
@@ -73,7 +73,7 @@ Add User Office Data
                                 </div>
                                 @if(auth()->user()->role == 'master')
                                 <div class="form-group">
-                                    <label for="">Office</label>
+                                    <label for="">Perusahaan</label>
                                     <select name="code" id="" class="form-control select2">
                                         @foreach ($offices as $office)
                                         <option value="{{ $office->code }}">{{ $office->name }}</option>
@@ -92,7 +92,7 @@ Add User Office Data
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Kirim</button>
                             </div>
                         </form>
                     </div>

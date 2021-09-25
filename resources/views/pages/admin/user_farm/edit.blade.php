@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Edit User Farm Data
+Ubah Data User Peternakan
 @endsection
 
 @push('prepend-style')
@@ -15,15 +15,15 @@ Edit User Farm Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">User Farm</h1>
+                    <h1 class="m-0">User Peternakan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">User Farm</a></li>
+                        <li class="breadcrumb-item"><a href="#">User Peternakan</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
-                        <li class="breadcrumb-item active">Edit Data</li>
+                        <li class="breadcrumb-item active">Ubah Data</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -40,7 +40,7 @@ Edit User Farm Data
                     <!-- general form elements -->
                     <div class="card card-warning">
                         <div class="card-header">
-                            <h3 class="card-title">Edit Data</h3>
+                            <h3 class="card-title">Ubah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -59,7 +59,7 @@ Edit User Farm Data
                             @method("PUT")
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">Nama</label>
                                     <input type="text" name="name" class="form-control" id="name" placeholder="Name"
                                         value="{{ $user->name ?? old('name') }}" required>
                                 </div>
@@ -84,7 +84,7 @@ Edit User Farm Data
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Farm</label>
+                                    <label for="">Peternakan</label>
                                     <select name="code" id="" class="form-control select2">
                                         @foreach ($farms as $farm)
                                         <option value="{{ $farm->code }}" @if ($farm->code === $user->code)
@@ -102,7 +102,7 @@ Edit User Farm Data
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-warning">Submit</button>
+                                <button type="submit" class="btn btn-warning">Kirim</button>
                             </div>
                         </form>
                     </div>

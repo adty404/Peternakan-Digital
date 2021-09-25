@@ -92,7 +92,7 @@ class UserFarmController extends Controller
             'code' => $request->code,
         ]);
 
-        Alert::success('Success', 'Data User Farm Successfully Created');
+        Alert::success('Success', 'Berhasil menambahkan data User Peternakan');
         return redirect()->route('user-farm.index');
 
     }
@@ -164,14 +164,13 @@ class UserFarmController extends Controller
         }else{
             $data['password'] = $user->password;
         }
-        $data['created_by'] = $request->created_by;
         $data['updated_by'] = $request->updated_by;
         $data['role'] = $request->role;
         $data['code'] = $request->code;        
 
         $user->update($data);
 
-        Alert::success('Success', 'Data User Farm Successfully Updated');
+        Alert::success('Success', 'Berhasil mengubah data user Peternakan');
         return redirect()->route('user-farm.index');
     }
 

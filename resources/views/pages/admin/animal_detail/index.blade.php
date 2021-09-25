@@ -1,7 +1,7 @@
 @extends('layouts.animal_detail')
 
 @section('title')
-Detail Animal | {{ $animal->name }}
+Detail Hewan | {{ $animal->name }}
 @endsection
 
 @section('content')
@@ -10,42 +10,42 @@ Detail Animal | {{ $animal->name }}
         <div class="col-md-6 col-xs-12">
             <div class="card" style="margin-top: 30px;">
                 <div class="card-header">
-                    <div class="text-center">Detail Animal : <b>{{ $animal->name }}</b></div>
+                    <div class="text-center">Detail Hewan : <b>{{ $animal->name }}</b></div>
                 </div>
                 <div class="card-body">
                     <table>
                         <tr>
-                            <td width="45%">Category</td>
+                            <td width="45%">Kategori</td>
                             <td width="10%">:</td>
                             <td>{{ $animal->category->name }}</td>
                         </tr>
                         <tr>
-                            <td>Farm</td>
+                            <td>Peternakan</td>
                             <td>:</td>
                             <td>{{ $animal->farm->name }}</td>
                         </tr>
                         <tr>
-                            <td>Name</td>
+                            <td>Nama</td>
                             <td>:</td>
                             <td>{{ $animal->name }}</td>
                         </tr>
                         <tr>
-                            <td>Weight</td>
+                            <td>Berat</td>
                             <td>:</td>
                             <td>{{ $animal->weight }}</td>
                         </tr>
                         <tr>
-                            <td>Height</td>
+                            <td>Tinggi</td>
                             <td>:</td>
                             <td>{{ $animal->height }}</td>
                         </tr>
                         <tr>
-                            <td>Condition</td>
+                            <td>Kondisi</td>
                             <td>:</td>
                             <td>{{ $animal->condition }}</td>
                         </tr>
                         <tr>
-                            <td>Note</td>
+                            <td>Keterangan</td>
                             <td>:</td>
                             <td>{{ $animal->note }}</td>
                         </tr>

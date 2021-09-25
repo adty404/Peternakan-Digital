@@ -86,7 +86,7 @@ class UserOfficeController extends Controller
             'code' => $request->code,
         ]);
 
-        Alert::success('Success', 'Data User Office Successfully Created');
+        Alert::success('Success', 'Berhasil menambahkan data User Perusahaan');
         return redirect()->route('user-office.index');
 
     }
@@ -158,14 +158,13 @@ class UserOfficeController extends Controller
         }else{
             $data['password'] = $user->password;
         }
-        $data['created_by'] = $request->created_by;
         $data['updated_by'] = $request->updated_by;
         $data['role'] = 'super-admin';
         $data['code'] = $request->code;        
 
         $user->update($data);
 
-        Alert::success('Success', 'Data User Office Successfully Updated');
+        Alert::success('Success', 'Berhasil mengubah data User Perusahaan');
         return redirect()->route('user-office.index');
     }
 

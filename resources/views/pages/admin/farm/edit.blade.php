@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Edit Farm Data
+Ubah Data Peternakan
 @endsection
 
 @push('prepend-style')
@@ -15,12 +15,12 @@ Edit Farm Data
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Farm</h1>
+                    <h1 class="m-0">Peternakan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Farm</a></li>
-                        <li class="breadcrumb-item active">Edit Data</li>
+                        <li class="breadcrumb-item"><a href="#">Peternakan</a></li>
+                        <li class="breadcrumb-item active">Ubah Data</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -37,7 +37,7 @@ Edit Farm Data
                     <!-- general form elements -->
                     <div class="card card-warning">
                         <div class="card-header">
-                            <h3 class="card-title">Edit Data</h3>
+                            <h3 class="card-title">Ubah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -55,12 +55,12 @@ Edit Farm Data
                             @method("PUT")
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">Nama</label>
                                     <input type="text" name="name" class="form-control" id="name"
                                         placeholder="Name" value="{{ $farm->name ?? old('name') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="address">Address</label>
+                                    <label for="address">Alamat</label>
                                     <textarea name="address" id="address" rows="3" class="form-control" placeholder="Address">{{ $farm->address ?? old('address') }}</textarea>
                                 </div>
                                 <div class="form-group">
@@ -69,7 +69,7 @@ Edit Farm Data
                                         placeholder="Email" value="{{ $farm->email ?? old('email') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="phone">Phone</label>
+                                    <label for="phone">Nomor HP</label>
                                     <input type="number" name="phone" class="form-control" id="phone"
                                         placeholder="Phone" value="{{ $farm->phone ?? old('phone') }}" required>
                                 </div>
@@ -79,7 +79,7 @@ Edit Farm Data
                                         placeholder="Pic" value="{{ $farm->pic ?? old('pic') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Office</label>
+                                    <label for="">Perusahaan</label>
                                     <select name="office_id" id="" class="form-control select2">
                                         @foreach ($offices as $office)
                                             <option
@@ -97,7 +97,7 @@ Edit Farm Data
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-warning">Submit</button>
+                                <button type="submit" class="btn btn-warning">Kirim</button>
                             </div>
                         </form>
                     </div>

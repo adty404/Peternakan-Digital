@@ -46,7 +46,7 @@
                         <div class="inner">
                             <h3>{{ $two }}</h3>
 
-                            <p>Offices</p>
+                            <p>Perusahaan</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-building"></i>
@@ -61,7 +61,7 @@
                         <div class="inner">
                             <h3>{{ $three }}</h3>
 
-                            <p>Farms</p>
+                            <p>Peternakan</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-store"></i>
@@ -76,7 +76,7 @@
                         <div class="inner">
                             <h3>{{ $four }}</h3>
 
-                            <p>Animals</p>
+                            <p>Hewan</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-horse"></i>

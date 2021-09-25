@@ -55,7 +55,7 @@ class OfficeController extends Controller
 
         Office::create($data);
 
-        Alert::success('Success', 'Data Office Successfully Created');
+        Alert::success('Success', 'Berhasil menambahkan data Perusahaan');
         return redirect()->route('office.index');
     }
 
@@ -98,7 +98,7 @@ class OfficeController extends Controller
 
         $office->update($data);
 
-        Alert::success('Success', 'Data Office Successfully Updated');
+        Alert::success('Success', 'Berhasil mengubah data Perusahaan');
         return redirect()->route('office.index');
     }
 

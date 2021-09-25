@@ -119,7 +119,7 @@ class AnimalController extends Controller
 
         Animal::create($data);
 
-        Alert::success('Success', 'Data Animal Successfully Created');
+        Alert::success('Success', 'Berhasil menambahkan data Hewan');
         return redirect()->route('animal.index');
     }
 
@@ -178,7 +178,7 @@ class AnimalController extends Controller
 
         $animal->update($data);
 
-        Alert::success('Success', 'Data Animal Successfully Updated');
+        Alert::success('Success', 'Berhasil mengubah data Hewan');
         return redirect()->route('animal.index');
     }
 

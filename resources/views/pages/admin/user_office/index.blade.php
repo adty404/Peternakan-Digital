@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Users Office
+User Perusahaan
 @endsection
 
 @section('content')
@@ -12,11 +12,11 @@ Users Office
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">User Office</h1>
+                    <h1 class="m-0">User Perusahaan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">User Office</a></li>
+                        <li class="breadcrumb-item"><a href="#">User Perusahaan</a></li>
                         {{-- @if (auth()->user()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
@@ -39,10 +39,10 @@ Users Office
                             <a href="{{ route('user-office.create') }}">
                                 <button type="button" class="btn btn-primary" style="float: right;">
                                     <i class="fa fa-plus"></i>
-                                    Add Data
+                                    Tambah Data
                                 </button>
                             </a>
-                            <h3 class="card-title">User Table</h3>
+                            <h3 class="card-title">Tabel User</h3>
                         </div>
     
                         <div class="card-body">
@@ -50,9 +50,9 @@ Users Office
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
+                                        <th>Nama</th>
                                         <th>Role</th>
-                                        <th>Office</th>
+                                        <th>Perusahaan</th>
                                         <th>Email</th>
                                         <th>Created By</th>
                                         <th>Updated By</th>

@@ -35,7 +35,7 @@ Users
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">User Table</h3>
+                            <h3 class="card-title">Tabel User</h3>
                         </div>
     
                         <div class="card-body">
@@ -43,10 +43,10 @@ Users
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
+                                        <th>Nama</th>
                                         <th>Role</th>
-                                        <th>Office</th>
-                                        <th>Farm</th>
+                                        <th>Perusahaan</th>
+                                        <th>Peternakan</th>
                                         <th>Email</th>
                                         <th>Created By</th>
                                         <th>Updated By</th>
