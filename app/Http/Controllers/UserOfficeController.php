@@ -39,12 +39,6 @@ class UserOfficeController extends Controller
             ->addColumn('office', function($user){
                 return $user->office['name'];
             })
-            ->addColumn('created_by', function($user){
-                return $user->cb['name'];
-            })
-            ->addColumn('updated_by', function($user){
-                return $user->ub['name'];
-            })
             ->addIndexColumn()
             ->rawColumns(['aksi'])
             ->toJson();

@@ -21,12 +21,6 @@ class CategoryController extends Controller
 
             return DataTables::of($query)
             ->addColumn('aksi', 'pages.admin.category.action')
-            ->addColumn('created_by', function($user){
-                return $user->cb['name'];
-            })
-            ->addColumn('updated_by', function($user){
-                return $user->ub['name'];
-            })
             ->addIndexColumn()
             ->rawColumns(['aksi'])
             ->toJson();
@@ -61,7 +55,7 @@ class CategoryController extends Controller
         Category::create($data);
 
         Alert::success('Success', 'Berhasil menambahkan data Kategori');
-        return redirect()->route('category.index');
+        return redirect()->route('animal-category.index');
     }
 
     /**
@@ -108,7 +102,7 @@ class CategoryController extends Controller
         $category->update($data);
 
         Alert::success('Success', 'Berhasil mengubah data Kategori');
-        return redirect()->route('category.index');
+        return redirect()->route('animal-category.index');
     }
 
     /**
@@ -121,6 +115,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('category.index');
+        return redirect()->route('animal-category.index');
     }
 }

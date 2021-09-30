@@ -26,39 +26,6 @@
                         </p>
                     </a>
                 </li>
-                @if(auth()->user()->role == 'master' || auth()->user()->role == 'super-admin')
-                <li class="nav-item {{ (request()->is('user*')) ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ (request()->is('user*')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            User
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        @if(auth()->user()->role == 'master')
-                        <li class="nav-item">
-                            <a href="{{ route('user-all.index') }}" class="nav-link {{ (request()->is('user-all*')) ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Semua</p>
-                            </a>
-                        </li>
-                        @endif
-                        <li class="nav-item">
-                            <a href="{{ route('user-office.index') }}" class="nav-link {{ (request()->is('user-office*')) ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Perusahaan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('user-farm.index') }}" class="nav-link {{ (request()->is('user-farm*')) ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Peternakan</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                @endif
                 @if(auth()->user()->role == 'master')
                 <li class="nav-item">
                     <a href="{{ route('office.index') }}"
@@ -80,24 +47,64 @@
                     </a>
                 </li>
                 @endif
-                @if(auth()->user()->role == 'master' || auth()->user()->role == 'super-admin' || auth()->user()->role == 'admin')
-                <li class="nav-item">
-                    <a href="{{ route('category.index') }}" class="nav-link {{ (request()->is('category*')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-clipboard-list"></i>
-                        <p>
-                            Kategori
-                        </p>
-                    </a>
-                </li>
-                @endif
-                <li class="nav-item">
-                    <a href="{{ route('animal.index') }}" class="nav-link {{ (request()->is('animal*')) ? 'active' : '' }}">
+                <li class="nav-item {{ (request()->is('animal*')) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ (request()->is('animal*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-horse"></i>
                         <p>
-                            Hewan
+                            Ternak
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        @if(auth()->user()->role == 'master' || auth()->user()->role == 'super-admin' || auth()->user()->role == 'admin')
+                        <li class="nav-item">
+                            <a href="{{ route('animal-category.index') }}" class="nav-link {{ (request()->is('animal-category*')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Kategori</p>
+                            </a>
+                        </li>
+                        @endif
+                        <li class="nav-item">
+                            <a href="{{ route('animal-data.index') }}" class="nav-link {{ (request()->is('animal-data*')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+                @if(auth()->user()->role == 'master' || auth()->user()->role == 'super-admin')
+                <li class="nav-item {{ (request()->is('user*')) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ (request()->is('user*')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            User
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        {{-- @if(auth()->user()->role == 'master')
+                        <li class="nav-item">
+                            <a href="{{ route('user-all.index') }}" class="nav-link {{ (request()->is('user-all*')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Semua</p>
+                            </a>
+                        </li>
+                        @endif --}}
+                        <li class="nav-item">
+                            <a href="{{ route('user-office.index') }}" class="nav-link {{ (request()->is('user-office*')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Perusahaan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('user-farm.index') }}" class="nav-link {{ (request()->is('user-farm*')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Peternakan</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

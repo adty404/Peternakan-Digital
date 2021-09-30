@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 
 class AnimalDetailController extends Controller
 {
-    public function index($barcode){
+    public function index($qrcode){
 
-        $animal = Animal::with(['category', 'farm', 'cb', 'ub'])->where('barcode', $barcode)->first();
+        $animal = Animal::with(['category', 'farm', 'cb', 'ub'])->where('qrcode', $qrcode)->first();
         return view('pages.admin.animal_detail.index', [
             'animal' => $animal
         ]);
     }
 
-    public function barcode($barcode){
-        return view('pages.admin.animal_detail.barcode', [
-            'link' => route('animal.detail', ['barcode' => $barcode]),
+    public function qrcode($qrcode){
+        return view('pages.admin.animal_detail.qrcode', [
+            'link' => route('animal.detail', ['qrcode' => $qrcode]),
         ]);
     }
 }

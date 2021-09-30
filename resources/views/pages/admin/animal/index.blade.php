@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Hewan
+Ternak
 @endsection
 
 @section('content')
@@ -12,11 +12,11 @@ Hewan
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Hewan</h1>
+                    <h1 class="m-0">Ternak</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Hewan</a></li>
+                        <li class="breadcrumb-item"><a href="#">Ternak</a></li>
                         {{-- @if (auth()->user()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
@@ -37,14 +37,14 @@ Hewan
                     <div class="card">
                         <div class="card-header">
                             @if (auth()->user()->role != 'operator')
-                            <a href="{{ route('animal.create') }}">
+                            <a href="{{ route('animal-data.create') }}">
                                 <button type="button" class="btn btn-primary" style="float: right;">
                                     <i class="fa fa-plus"></i>
                                     Tambah Data
                                 </button>
                             </a>
                             @endif
-                            <h3 class="card-title">Tabel Hewan</h3>
+                            <h3 class="card-title">Tabel Ternak</h3>
                         </div>
     
                         <div class="card-body">
@@ -52,17 +52,10 @@ Hewan
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Nama</th>
                                         <th>Kategori</th>
                                         <th>Peternakan</th>
-                                        <th>Nama</th>
-                                        <th>Berat</th>
-                                        <th>Tinggi</th>
-                                        <th>Kondisi</th>
-                                        <th>Keterangan</th>
-                                        <th>Barcode</th>
-                                        <th>Created By</th>
-                                        <th>Updated By</th>
-                                        <th>Updated At</th>
+                                        <th>QRCode</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -124,7 +117,7 @@ Hewan
         scrollX: true,
         columnDefs: [
                 {
-                    "targets": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], // your case first column
+                    "targets": [0, 1, 2, 3, 4, 5], // your case first column
                     "className": "text-center",
                 },
             ],
@@ -136,7 +129,7 @@ Hewan
                 $.extend(true, {}, {
                     extend: 'csvHtml5',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                        columns: [0, 1, 2, 3, 4, 5],
                     },
                     className: 'btn btn-primary',
                     text: 'CSV',
@@ -144,7 +137,7 @@ Hewan
                 $.extend(true, {}, {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                        columns: [0, 1, 2, 3, 4, 5],
                         // stripHtml: false
                     },
                     className: 'btn btn-primary',
@@ -157,6 +150,10 @@ Hewan
                 searchable : false
             },
             {
+                data: 'name',
+                name: 'name'
+            },
+            {
                 data: 'category',
                 name: 'category'
             },
@@ -165,40 +162,8 @@ Hewan
                 name: 'farm'
             },
             {
-                data: 'name',
-                name: 'name'
-            },
-            {
-                data: 'weight',
-                name: 'weight',
-            },
-            {
-                data: 'height',
-                name: 'height',
-            },
-            {
-                data: 'condition',
-                name: 'condition',
-            },
-            {
-                data: 'note',
-                name: 'note',
-            },
-            {
-                data: 'barcode',
-                name: 'barcode',
-            },
-            {
-                data: 'created_by',
-                name: 'created_by',
-            },
-            {
-                data: 'updated_by',
-                name: 'updated_by',
-            },
-            {
-                data: 'updated_at',
-                name: 'updated_at',
+                data: 'qrcode',
+                name: 'qrcode',
             },
             {
                 data: 'aksi',

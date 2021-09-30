@@ -54,8 +54,6 @@ User Perusahaan
                                         <th>Role</th>
                                         <th>Perusahaan</th>
                                         <th>Email</th>
-                                        <th>Created By</th>
-                                        <th>Updated By</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -116,6 +114,12 @@ User Perusahaan
         ordering: true,
         scrollX: true,
         order:[[0,"DESC"]],
+        columnDefs: [
+                {
+                    "targets": [0, 1, 2, 3, 4, 5], // your case first column
+                    "className": "text-center",
+                },
+            ],
         ajax: {
             url: '{!! url()->current() !!}',
         },
@@ -139,14 +143,6 @@ User Perusahaan
             {
                 data: 'email',
                 name: 'email',
-            },
-            {
-                data: 'created_by',
-                name: 'created_by',
-            },
-            {
-                data: 'updated_by',
-                name: 'updated_by',
             },
             {
                 data: 'aksi',

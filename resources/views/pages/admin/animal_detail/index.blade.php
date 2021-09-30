@@ -1,7 +1,7 @@
 @extends('layouts.animal_detail')
 
 @section('title')
-Detail Hewan | {{ $animal->name }}
+Detail Ternak | {{ $animal->name }}
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@ Detail Hewan | {{ $animal->name }}
         <div class="col-md-6 col-xs-12">
             <div class="card" style="margin-top: 30px;">
                 <div class="card-header">
-                    <div class="text-center">Detail Hewan : <b>{{ $animal->name }}</b></div>
+                    <div class="text-center">Detail Ternak : <b>{{ $animal->name }}</b></div>
                 </div>
                 <div class="card-body">
                     <table>

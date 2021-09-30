@@ -49,7 +49,7 @@ Tambah Data Kategori
                             </ul>
                         </div>
                         @endif
-                        <form method="POST" action="{{ route('category.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('animal-category.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">

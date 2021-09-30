@@ -54,25 +54,23 @@ class AnimalController extends Controller
             ->addColumn('updated_at', function($animal){
                 return $animal->updated_at->format('d M Y, H:i');
             })
-            ->addColumn('barcode', function ($animal) {
-                $barcode_link = route('animal.detail', ['barcode' => $animal['barcode']]);
-                $barcode = QrCode::format('png')->size(500)->generate($barcode_link);
+            ->addColumn('qrcode', function ($animal) {
+                $qrcode_link = route('animal.detail', ['qrcode' => $animal['qrcode']]);
+                $qrcode = QrCode::format('png')->size(500)->generate($qrcode_link);
 
                 // return '
-                //     <a href="data:image/png;base64, '.base64_encode($barcode).'" target="_blank" style="color:black; font-size:20px;"><i class="fa fa-qrcode"></i></a>
+                //     <a href="data:image/png;base64, '.base64_encode($qrcode).'" target="_blank" style="color:black; font-size:20px;"><i class="fa fa-qrcode"></i></a>
                 //     <span style="color:white; font-size:0px;">'. $barcode_link .'</span>
                 // ';
                 return '
-                <a href="'.route('animal.barcode', ['barcode' => $animal['barcode']]).'" target="_blank" style="color:black; font-size:20px;"><i class="fa fa-qrcode"></i></a>
+                <a href="'.route('animal.qrcode', ['qrcode' => $animal['qrcode']]).'" target="_blank" style="color:black; font-size:20px;"><i class="fa fa-qrcode"></i></a>
                 ';
             })
             ->addIndexColumn()
-            ->rawColumns(['category', 'farm', 'created_by', 'updated_by', 'updated_at', 'aksi', 'barcode'])
+            ->rawColumns(['category', 'farm', 'created_by', 'updated_by', 'updated_at', 'aksi', 'qrcode'])
             ->make(true);
         }
-        return view('pages.admin.animal.index', [
-            
-        ]);
+        return view('pages.admin.animal.index');
     }
 
     /**
@@ -115,12 +113,12 @@ class AnimalController extends Controller
         
         $data = $request->all();
 
-        $data['barcode'] = Str::random(8);
+        $data['qrcode'] = Str::random(8);
 
         Animal::create($data);
 
         Alert::success('Success', 'Berhasil menambahkan data Hewan');
-        return redirect()->route('animal.index');
+        return redirect()->route('animal-data.index');
     }
 
     /**
@@ -179,7 +177,7 @@ class AnimalController extends Controller
         $animal->update($data);
 
         Alert::success('Success', 'Berhasil mengubah data Hewan');
-        return redirect()->route('animal.index');
+        return redirect()->route('animal-data.index');
     }
 
     /**
@@ -192,6 +190,6 @@ class AnimalController extends Controller
     {
         $animal->delete();
 
-        return redirect()->route('animal.index');
+        return redirect()->route('animal-data.index');
     }
 }

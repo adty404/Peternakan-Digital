@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Ubah Data Hewan
+Ubah Data Ternak
 @endsection
 
 @push('prepend-style')
@@ -15,11 +15,11 @@ Ubah Data Hewan
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Hewan</h1>
+                    <h1 class="m-0">Ternak</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Hewan</a></li>
+                        <li class="breadcrumb-item"><a href="#">Ternak</a></li>
                         {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
@@ -53,7 +53,7 @@ Ubah Data Hewan
                             </ul>
                         </div>
                         @endif
-                        <form method="POST" action="{{ route('animal.update', $animal) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('animal-data.update', $animal) }}" enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
                             <div class="card-body">

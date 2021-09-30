@@ -12,7 +12,7 @@ class Animal extends Model
 
     protected $table = 'animal';
 
-    protected $fillable = ['category_id', 'farm_id', 'name', 'weight', 'height', 'condition', 'note', 'created_by', 'updated_by', 'barcode'];
+    protected $fillable = ['category_id', 'farm_id', 'name', 'weight', 'height', 'condition', 'note', 'created_by', 'updated_by', 'qrcode'];
 
     protected $hidden = [];
 

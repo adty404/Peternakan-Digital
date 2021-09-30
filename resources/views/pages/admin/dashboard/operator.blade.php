@@ -76,12 +76,12 @@
                         <div class="inner">
                             <h3>{{ $four }}</h3>
 
-                            <p>Hewan</p>
+                            <p>Ternak</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-horse"></i>
                         </div>
-                        <a href="{{ route('animal.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('animal-data.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

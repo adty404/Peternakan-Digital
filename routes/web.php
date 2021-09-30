@@ -36,25 +36,19 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin,opera
 
     //Animal
     // Route::resource('animal', AnimalController::class);
-    Route::get('animal', [AnimalController::class, 'index'])->name('animal.index');
-    Route::get('animal/{animal}/edit', [AnimalController::class, 'edit'])->name('animal.edit');
-    Route::put('animal/{animal}', [AnimalController::class, 'update'])->name('animal.update');
-    Route::delete('animal/{animal}', [AnimalController::class, 'destroy'])->name('animal.destroy');
-
-    //Animal Detail
-    Route::get('animal/detail/{barcode}', [AnimalDetailController::class, 'index'])->name('animal.detail');
-
-    //Animal Barcode
-    Route::get('animal/barcode/{barcode}', [AnimalDetailController::class, 'barcode'])->name('animal.barcode');
+    Route::get('animal-data', [AnimalController::class, 'index'])->name('animal-data.index');
+    Route::get('animal-data/{animal}/edit', [AnimalController::class, 'edit'])->name('animal-data.edit');
+    Route::put('animal-data/{animal}', [AnimalController::class, 'update'])->name('animal-data.update');
+    Route::delete('animal-data/{animal}', [AnimalController::class, 'destroy'])->name('animal-data.destroy');
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin']], function(){
     //Category
-    Route::resource('category', CategoryController::class);
+    Route::resource('animal-category', CategoryController::class);
 
     //Animal
-    Route::get('animal/create', [AnimalController::class, 'create'])->name('animal.create');
-    Route::post('animal', [AnimalController::class, 'store'])->name('animal.store');
+    Route::get('animal-data/create', [AnimalController::class, 'create'])->name('animal-data.create');
+    Route::post('animal-data', [AnimalController::class, 'store'])->name('animal-data.store');
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], function(){
@@ -76,5 +70,8 @@ Route::group(['middleware' => ['auth', 'checkRole:master']], function(){
     Route::resource('office', OfficeController::class);
 });
 
+//Animal Detail
+Route::get('data/detail/{qrcode}', [AnimalDetailController::class, 'index'])->name('animal.detail');
 
-
+//Animal Barcode
+Route::get('data/code/{qrcode}', [AnimalDetailController::class, 'qrcode'])->name('animal.qrcode');

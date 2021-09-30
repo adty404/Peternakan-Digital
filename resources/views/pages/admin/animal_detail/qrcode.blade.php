@@ -1,7 +1,7 @@
 @extends('layouts.animal_detail')
 
 @section('title')
-Barcode
+QRCode
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@ Barcode
         <div class="col-md-6 col-xs-12">
             <div class="card" style="margin-top: 30px;">
                 <div class="card-header">
-                    <div class="text-center">Barcode</b></div>
+                    <div class="text-center">QRCode</b></div>
                 </div>
                 <div class="card-body">
                     <div class="text-center">

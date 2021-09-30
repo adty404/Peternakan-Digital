@@ -1,5 +1,5 @@
-<a href="{{ route('category.edit', $model) }}" class="btn btn-warning btn-sm">Ubah</a>
-<button href="{{ route('category.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Hapus</button>
+<a href="{{ route('animal-category.edit', $model) }}" class="btn btn-warning btn-sm">Ubah</a>
+<button href="{{ route('animal-category.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Hapus</button>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script>

@@ -36,7 +36,7 @@ Kategori
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{ route('category.create') }}">
+                            <a href="{{ route('animal-category.create') }}">
                                 <button type="button" class="btn btn-primary" style="float: right;">
                                     <i class="fa fa-plus"></i>
                                     Tambah Data
@@ -51,8 +51,6 @@ Kategori
                                     <tr>
                                         <th>#</th>
                                         <th>Nama</th>
-                                        <th>Created By</th>
-                                        <th>Updated By</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -115,7 +113,7 @@ Kategori
         order:[[0,"DESC"]],
         columnDefs: [
                 {
-                    "targets": [0, 1, 2, 3, 4], // your case first column
+                    "targets": [0, 1, 2], // your case first column
                     "className": "text-center",
                 },
             ],
@@ -130,14 +128,6 @@ Kategori
             {
                 data: 'name',
                 name: 'name'
-            },
-            {
-                data: 'created_by',
-                name: 'created_by'
-            },
-            {
-                data: 'updated_by',
-                name: 'updated_by',
             },
             {
                 data: 'aksi',
