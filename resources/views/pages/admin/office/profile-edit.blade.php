@@ -33,7 +33,7 @@ Perusahaan
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="{{ $office->logo }}"
+                                <img class="profile-user-img img-circle" width="100" height="70" src="{{ $office->logo }}"
                                     alt="Logo Perusahaan">
                             </div>
 

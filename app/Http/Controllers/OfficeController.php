@@ -123,8 +123,13 @@ class OfficeController extends Controller
         $data['logo'] = $logo;
         $office->update($data);
 
-        Alert::success('Success', 'Berhasil mengubah data Perusahaan');
-        return redirect()->route('office.index');
+        if(auth()->user()->role == 'super-admin'){
+            Alert::success('Success', 'Berhasil mengubah data Perusahaan');
+            return redirect()->route('dashboard');
+        }else if(auth()->user()->role == 'master'){
+            Alert::success('Success', 'Berhasil mengubah data Perusahaan');
+            return redirect()->route('office.index');
+        }
     }
 
     /**

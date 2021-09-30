@@ -60,6 +60,10 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], functio
 
     //Farm
     Route::resource('farm', FarmController::class);
+
+    //Office Profile Edit
+    Route::get('office/{office}/edit', [OfficeController::class, 'edit'])->name('office.edit');
+    Route::put('office/{office}', [OfficeController::class, 'update'])->name('office.update');
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:master']], function(){
@@ -67,7 +71,10 @@ Route::group(['middleware' => ['auth', 'checkRole:master']], function(){
     Route::resource('user-all', UserController::class);
 
     //Office
-    Route::resource('office', OfficeController::class);
+    Route::get('office', [OfficeController::class, 'index'])->name('office.index');
+    Route::delete('office/{office}', [OfficeController::class, 'destroy'])->name('office.destroy');
+    Route::get('office/create', [OfficeController::class, 'create'])->name('office.create');
+    Route::post('office', [OfficeController::class, 'store'])->name('office.store');
 });
 
 //Animal Detail
