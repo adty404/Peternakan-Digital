@@ -30,6 +30,7 @@ class OfficeRequest extends FormRequest
             'email' => ['required', 'email', 'unique:office,email'],
             'phone' => ['required', 'numeric', 'unique:office,phone'],
             'pic' => ['required', 'max:255'],
+            'logo' => ['required', 'image', 'mimes:jpeg,jpg,png', 'max:2048'],
         ];
     }
 }

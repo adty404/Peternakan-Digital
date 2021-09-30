@@ -6,6 +6,7 @@ use App\Http\Requests\OfficeRequest;
 use App\Http\Requests\OfficeUpdateRequest;
 use App\Models\Office;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -51,7 +52,13 @@ class OfficeController extends Controller
     {
         $data = $request->all();
 
+        if($request->hasFile('logo')){
+            $path = Storage::disk('s3')->putFile('ternak/perusahaan/logo', $request->logo, 'public');
+            $logo = Storage::cloud()->url($path);
+        }
+
         $data['code'] = Str::random(20);
+        $data['logo'] = $logo;
 
         Office::create($data);
 
@@ -80,7 +87,7 @@ class OfficeController extends Controller
     {
         $office = Office::findOrFail($id);
 
-        return view('pages.admin.office.edit', [
+        return view('pages.admin.office.profile-edit', [
             'office' => $office
         ]);
     }
@@ -92,10 +99,28 @@ class OfficeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(OfficeUpdateRequest $request, Office $office)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
+        $office = Office::findOrFail($id);
 
+        $validated = $request->validate([
+            'name' => ['required', 'max:255'],
+            'address' => ['required', 'max:255'],
+            'email' => ['unique:office,email,'.$office->id],
+            'phone' => ['unique:office,phone,'.$office->id],
+            'pic' => ['required', 'max:255'],
+            'logo' => ['nullable', 'image', 'mimes:jpeg,jpg,png', 'max:2048'],
+        ]);
+
+        if($request->hasFile('logo') && $request->has('logo')){
+            $path = Storage::disk('s3')->putFile('ternak/perusahaan/logo', $request->logo, 'public');
+            $logo = Storage::cloud()->url($path);
+        }else{
+            $logo = $office->logo;
+        }
+
+        $data['logo'] = $logo;
         $office->update($data);
 
         Alert::success('Success', 'Berhasil mengubah data Perusahaan');

@@ -12,7 +12,7 @@ class Office extends Model
 
     protected $table = 'office';
 
-    protected $fillable = ['code', 'name', 'address', 'email', 'phone', 'pic'];
+    protected $fillable = ['code', 'name', 'address', 'email', 'phone', 'pic', 'logo'];
 
     protected $hidden = [];
 

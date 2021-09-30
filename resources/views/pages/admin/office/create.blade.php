@@ -58,6 +58,10 @@ Tambah Data Perusahan
                                         placeholder="Name" value="{{ old('name') }}" required>
                                 </div>
                                 <div class="form-group">
+                                    <label for="logo">Logo</label>
+                                    <input type="file" name="logo" class="form-control" id="logo" value="{{ old('name') }}" required>
+                                </div>
+                                <div class="form-group">
                                     <label for="address">Alamat</label>
                                     <textarea name="address" id="address" rows="3" class="form-control" placeholder="Address">{{ old('address') }}</textarea>
                                 </div>

@@ -130,9 +130,21 @@ class FarmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(FarmUpdateRequest $request, Farm $farm)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
+        $farm = Farm::findOrFail($id);
+
+        $validated = $request->validate([
+            //code
+            'office_id' => ['required'],
+            'name' => ['required', 'max:255'],
+            'address' => ['required', 'max:255'],
+            'email' => ['required', 'email', 'unique:farm,email,'.$farm->id],
+            'phone' => ['required', 'numeric', 'unique:farm,phone,'.$farm->id],
+            'pic' => ['required', 'max:255'],
+            'logo' => ['nullable', 'image', 'mimes:jpeg,jpg,png', 'max:2048'],
+        ]);
 
         if($request->hasFile('logo') && $request->has('logo')){
             $path = Storage::disk('s3')->putFile('ternak/peternakan/logo', $request->logo, 'public');

@@ -4,6 +4,10 @@
 Peternakan
 @endsection
 
+@push('prepend-style')
+<link href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
+@endpush
+
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -103,7 +107,8 @@ Peternakan
                                 </div>
                                 <div class="form-group">
                                     <label for="logo">Logo</label>
-                                    <input type="file" name="logo" class="form-control" id="logo" value="{{ $farm->logo ?? old('logo') }}" required>
+                                    <input type="file" name="logo" class="form-control" id="logo"
+                                        value="{{ $farm->logo ?? old('logo') }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="address">Alamat</label>
@@ -162,3 +167,11 @@ Peternakan
     <!-- /.content -->
   </div>
 @endsection
+
+@push('addon-script')
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+
+<script>
+    $('.select2').select2();
+</script>
+@endpush
