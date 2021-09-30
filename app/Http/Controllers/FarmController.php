@@ -7,6 +7,7 @@ use App\Http\Requests\FarmUpdateRequest;
 use App\Models\Farm;
 use App\Models\Office;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -71,7 +72,13 @@ class FarmController extends Controller
     {
         $data = $request->all();
 
+        if($request->hasFile('logo')){
+            $path = Storage::disk('s3')->putFile('ternak/peternakan/logo', $request->logo, 'public');
+            $logo = Storage::cloud()->url($path);
+        }
+
         $data['code'] = Str::random(20);
+        $data['logo'] = $logo;
 
         Farm::create($data);
 
@@ -110,7 +117,7 @@ class FarmController extends Controller
             $offices = Office::where('id', $office_id)->get();
         }
         
-        return view('pages.admin.farm.edit', [
+        return view('pages.admin.farm.profile-edit', [
             'farm' => $farm,
             'offices' => $offices
         ]);
@@ -127,6 +134,14 @@ class FarmController extends Controller
     {
         $data = $request->all();
 
+        if($request->hasFile('logo') && $request->has('logo')){
+            $path = Storage::disk('s3')->putFile('ternak/peternakan/logo', $request->logo, 'public');
+            $logo = Storage::cloud()->url($path);
+        }else{
+            $logo = $farm->logo;
+        }
+
+        $data['logo'] = $logo;
         $farm->update($data);
 
         Alert::success('Success', 'Berhasil mengubah data Peternakan');
