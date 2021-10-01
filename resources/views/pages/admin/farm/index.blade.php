@@ -53,9 +53,6 @@ Peternakan
                                         <th>Nama</th>
                                         <th>Perusahaan</th>
                                         <th>Alamat</th>
-                                        <th>Email</th>
-                                        <th>Nomor HP</th>
-                                        <th>Pic</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -133,18 +130,6 @@ Peternakan
             {
                 data: 'address',
                 name: 'address'
-            },
-            {
-                data: 'email',
-                name: 'email',
-            },
-            {
-                data: 'phone',
-                name: 'phone',
-            },
-            {
-                data: 'pic',
-                name: 'pic',
             },
             {
                 data: 'aksi',

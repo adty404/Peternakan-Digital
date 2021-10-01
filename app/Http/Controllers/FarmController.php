@@ -34,7 +34,12 @@ class FarmController extends Controller
         if (request()->ajax()) {
 
             return DataTables::of($query)
-            ->addColumn('aksi', 'pages.admin.farm.action')
+            ->addColumn('aksi', function($farm){
+                $data = [
+                    'id' => $farm->id
+                ];
+                return view('pages.admin.farm.action')->with('data', $data);
+            })
             ->addColumn('office', function($farm){
                 return $farm->office['name'];
             })
@@ -43,6 +48,14 @@ class FarmController extends Controller
             ->toJson();
         }
         return view('pages.admin.farm.index');
+    }
+
+    public function more($id){
+        $farm = Farm::findOrFail($id);
+        
+        return view('pages.admin.farm.more', [
+            'farm' => $farm
+        ]);
     }
 
     /**

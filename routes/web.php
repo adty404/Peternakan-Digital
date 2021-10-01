@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], functio
 
     //Farm
     Route::resource('farm', FarmController::class);
+    Route::get('farm/more/{id}', [FarmController::class, 'more'])->name('farm.more');
 
     //Office Profile Edit
     Route::get('office/{office}/edit', [OfficeController::class, 'edit'])->name('office.edit');
