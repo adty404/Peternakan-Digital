@@ -24,7 +24,7 @@ class AnimalSeeder extends Seeder
             'note' => 'Note 1',
             'created_by' => '1',
             'updated_by' => '1',
-            'barcode' => 'HkdDs71S',
+            'qrcode' => 'HkdDs71S',
         ]);
     }
 }

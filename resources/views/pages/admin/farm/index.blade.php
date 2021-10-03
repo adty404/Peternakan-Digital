@@ -53,6 +53,7 @@ Peternakan
                                         <th>Nama</th>
                                         <th>Perusahaan</th>
                                         <th>Alamat</th>
+                                        <th>QRCode</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -130,6 +131,10 @@ Peternakan
             {
                 data: 'address',
                 name: 'address'
+            },
+            {
+                data: 'qrcode',
+                name: 'qrcode',
             },
             {
                 data: 'aksi',

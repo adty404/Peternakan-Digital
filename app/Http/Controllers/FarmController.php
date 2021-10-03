@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class FarmController extends Controller
 {
@@ -43,9 +44,21 @@ class FarmController extends Controller
             ->addColumn('office', function($farm){
                 return $farm->office['name'];
             })
+            ->addColumn('qrcode', function ($farm) {
+                $qrcode_link = route('farm.detail', ['qrcode' => $farm['qrcode']]);
+                $qrcode = QrCode::format('png')->size(500)->generate($qrcode_link);
+
+                // return '
+                //     <a href="data:image/png;base64, '.base64_encode($qrcode).'" target="_blank" style="color:black; font-size:20px;"><i class="fa fa-qrcode"></i></a>
+                //     <span style="color:white; font-size:0px;">'. $barcode_link .'</span>
+                // ';
+                return '
+                <a href="'.route('farm.qrcode', ['qrcode' => $farm['qrcode']]).'" target="_blank" style="color:black; font-size:20px;"><i class="fa fa-qrcode"></i></a>
+                ';
+            })
             ->addIndexColumn()
-            ->rawColumns(['aksi'])
-            ->toJson();
+            ->rawColumns(['aksi', 'farm', 'qrcode'])
+            ->make(true);
         }
         return view('pages.admin.farm.index');
     }
@@ -91,6 +104,7 @@ class FarmController extends Controller
         }
 
         $data['code'] = Str::random(20);
+        $data['qrcode'] = Str::random(8);
         $data['logo'] = $logo;
 
         Farm::create($data);

@@ -12,7 +12,7 @@ class Farm extends Model
 
     protected $table = 'farm';
 
-    protected $fillable = ['code', 'office_id', 'name', 'address', 'email', 'phone', 'pic', 'logo'];
+    protected $fillable = ['code', 'office_id', 'name', 'address', 'email', 'phone', 'pic', 'logo', 'qrcode'];
 
     protected $hidden = [];
 

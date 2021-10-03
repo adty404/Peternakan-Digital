@@ -5,6 +5,7 @@ use App\Http\Controllers\AnimalDetailController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FarmController;
+use App\Http\Controllers\FarmDetailController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserFarmController;
@@ -84,3 +85,9 @@ Route::get('data/detail/{qrcode}', [AnimalDetailController::class, 'index'])->na
 
 //Animal Barcode
 Route::get('data/code/{qrcode}', [AnimalDetailController::class, 'qrcode'])->name('animal.qrcode');
+
+//Farm Detail
+Route::get('farm/detail/{qrcode}', [FarmDetailController::class, 'index'])->name('farm.detail');
+
+//Farm Barcode
+Route::get('farm/code/{qrcode}', [FarmDetailController::class, 'qrcode'])->name('farm.qrcode');
