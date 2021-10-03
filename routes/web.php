@@ -49,6 +49,7 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin']], f
     //Animal
     Route::get('animal-data/create', [AnimalController::class, 'create'])->name('animal-data.create');
     Route::post('animal-data', [AnimalController::class, 'store'])->name('animal-data.store');
+    Route::get('animal-data/more/{id}', [AnimalController::class, 'more'])->name('animal-data.more');
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], function(){

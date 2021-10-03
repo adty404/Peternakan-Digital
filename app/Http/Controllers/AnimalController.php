@@ -38,7 +38,12 @@ class AnimalController extends Controller
         if (request()->ajax()) {
 
             return DataTables::of($query)
-            ->addColumn('aksi', 'pages.admin.animal.action')
+            ->addColumn('aksi', function($animal){
+                $data = [
+                    'id' => $animal->id
+                ];
+                return view('pages.admin.animal.action')->with('data', $data);
+            })
             ->addColumn('category', function($animal){
                 return $animal->category['name'];
             })
@@ -71,6 +76,14 @@ class AnimalController extends Controller
             ->make(true);
         }
         return view('pages.admin.animal.index');
+    }
+
+    public function more($id){
+        $animal = Animal::findOrFail($id);
+
+        return view('pages.admin.animal.more', [
+            'animal' => $animal,
+        ]);
     }
 
     /**
