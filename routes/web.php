@@ -6,6 +6,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FarmController;
 use App\Http\Controllers\FarmDetailController;
+use App\Http\Controllers\GalleryFarmController;
+use App\Http\Controllers\GalleryOfficeController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserFarmController;
@@ -63,6 +65,18 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], functio
     //Farm
     Route::resource('farm', FarmController::class);
     Route::get('farm/more/{id}', [FarmController::class, 'more'])->name('farm.more');
+
+    //Gallery Farm
+    Route::get('farm-gallery/{code}', [GalleryFarmController::class, 'index'])->name('farm-gallery.index');
+    Route::get('farm-gallery/create/{gallery}', [GalleryFarmController::class, 'create'])->name('farm-gallery.create');
+    Route::post('farm-gallery', [GalleryFarmController::class, 'store'])->name('farm-gallery.store');
+    Route::delete('farm-gallery/destroy/{gallery}', [GalleryFarmController::class, 'destroy'])->name('farm-gallery.destroy');
+
+    //Gallery Office
+    Route::get('office-gallery/{code}', [GalleryOfficeController::class, 'index'])->name('office-gallery.index');
+    Route::get('office-gallery/create/{gallery}', [GalleryOfficeController::class, 'create'])->name('office-gallery.create');
+    Route::post('office-gallery', [GalleryOfficeController::class, 'store'])->name('office-gallery.store');
+    Route::delete('office-gallery/destroy/{gallery}', [GalleryOfficeController::class, 'destroy'])->name('office-gallery.destroy');
 
     //Office Profile Edit
     Route::get('office/{office}/edit', [OfficeController::class, 'edit'])->name('office.edit');

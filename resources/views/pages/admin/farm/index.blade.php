@@ -54,6 +54,7 @@ Peternakan
                                         <th>Perusahaan</th>
                                         <th>Alamat</th>
                                         <th>QRCode</th>
+                                        <th>Gallery</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -135,6 +136,10 @@ Peternakan
             {
                 data: 'qrcode',
                 name: 'qrcode',
+            },
+            {
+                data: 'gallery',
+                name: 'gallery',
             },
             {
                 data: 'aksi',

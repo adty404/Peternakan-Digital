@@ -21,6 +21,7 @@ class OfficeSeeder extends Seeder
             'email' => 'office1-test@peternakan.com',
             'phone' => '081222125534',
             'pic' => 'Pic office 1',
+            'logo' => 'https://picsum.photos/id/0/5616/3744'
         ]);
     }
 }

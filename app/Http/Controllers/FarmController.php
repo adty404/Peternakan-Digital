@@ -56,8 +56,11 @@ class FarmController extends Controller
                 <a href="'.route('farm.qrcode', ['qrcode' => $farm['qrcode']]).'" target="_blank" style="color:black; font-size:20px;"><i class="fa fa-qrcode"></i></a>
                 ';
             })
+            ->addColumn('gallery', function($farm) {
+                return '<a href="'.route('farm-gallery.index', ['code' => $farm['code']]).'" class="btn btn-primary btn-sm" style="margin-top: 5px;">Gallery</a>';
+            })
             ->addIndexColumn()
-            ->rawColumns(['aksi', 'farm', 'qrcode'])
+            ->rawColumns(['aksi', 'farm', 'qrcode', 'gallery'])
             ->make(true);
         }
         return view('pages.admin.farm.index');

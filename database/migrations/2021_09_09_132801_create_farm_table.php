@@ -15,13 +15,16 @@ class CreateFarmTable extends Migration
     {
         Schema::create('farm', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('code');
+            $table->string('code');
             $table->unsignedBigInteger('office_id');
             $table->string('name');
             $table->string('address');
             $table->string('email');
             $table->string('phone');
             $table->string('pic');
+            $table->string('logo')->nullable();
+            $table->string('qrcode')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -22,6 +22,10 @@ class CreateAnimalTable extends Migration
             $table->string('height');
             $table->string('condition');
             $table->string('note');
+            $table->string('created_by');
+            $table->string('updated_by');
+            $table->string('qrcode');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

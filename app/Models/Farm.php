@@ -24,4 +24,8 @@ class Farm extends Model
         return $this->belongsTo(Office::class, 'office_id', 'id');
     }
 
+    public function gallery(){
+        return $this->hasMany(Gallery::class);
+    }
+
 }

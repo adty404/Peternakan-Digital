@@ -22,7 +22,8 @@ class FarmSeeder extends Seeder
             'email' => 'farm1-test@peternakan.com',
             'phone' => '081344123312',
             'pic' => 'Pic farm 1',
-            'qrcode' => 'ASihbs71'
+            'qrcode' => 'ASihbs71',
+            'logo' => 'https://picsum.photos/id/0/5616/3744'
         ]);
     }
 }

@@ -54,14 +54,32 @@
                 </li>
                 @endif
                 @if(auth()->user()->role == 'super-admin')
-                <li class="nav-item">
-                    <a href="{{ route('office.edit', App\Models\Office::where('code', auth()->user()->code)->pluck('id')->first()) }}"
-                        class="nav-link {{ (request()->is('office*')) ? 'active' : '' }}">
+                <li class="nav-item {{ (request()->is('office*')) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ (request()->is('office*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-building"></i>
                         <p>
                             Perusahaan
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('office.edit', App\Models\Office::where('code', auth()->user()->code)->pluck('id')->first()) }}"
+                                class="nav-link {{ (request()->is('office/*')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Data
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('office-gallery.index', App\Models\Office::where('code', auth()->user()->code)->pluck('code')->first()) }}"
+                                class="nav-link {{ (request()->is('office-gallery*')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Gallery</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 @endif
                 @if(auth()->user()->role == 'master' || auth()->user()->role == 'super-admin')

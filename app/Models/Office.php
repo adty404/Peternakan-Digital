@@ -23,4 +23,8 @@ class Office extends Model
     public function farm(){
         return $this->hasMany(Farm::class);
     }
+
+    public function gallery(){
+        return $this->hasMany(Gallery::class);
+    }
 }

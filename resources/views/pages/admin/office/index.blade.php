@@ -55,6 +55,7 @@ Perusahaan
                                         <th>Email</th>
                                         <th>Nomor HP</th>
                                         <th>Pic</th>
+                                        <th>Gallery</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -142,6 +143,10 @@ Perusahaan
             {
                 data: 'pic',
                 name: 'pic',
+            },
+            {
+                data: 'gallery',
+                name: 'gallery',
             },
             {
                 data: 'aksi',

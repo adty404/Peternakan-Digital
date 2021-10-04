@@ -91,9 +91,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
+        $category = Category::findOrFail($id);
 
         $validated = $request->validate([
             'name' => ['required', 'max:255'],
@@ -111,8 +112,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
+        $category = Category::findOrFail($id);
+
         $category->delete();
 
         return redirect()->route('animal-category.index');

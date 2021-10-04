@@ -1,4 +1,4 @@
-<a href="{{ route('farm.more', ['id' => $data['id']]) }}" class="btn btn-primary btn-sm" style="margin-top: 5px;">Lihat</a>
+<a href="{{ route('farm.more', ['id' => $data['id']]) }}" class="btn btn-info btn-sm" style="margin-top: 5px;">Lihat</a>
 <a href="{{ route('farm.edit', ['farm' => $data['id']]) }}" class="btn btn-warning btn-sm" style="margin-top: 5px;">Ubah</a>
 <button href="{{ route('farm.destroy', ['farm' => $data['id']]) }}" class="btn btn-danger btn-sm" id="delete" style="margin-top: 5px;">Hapus</button>
 
