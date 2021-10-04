@@ -56,6 +56,7 @@ Ternak
                                         <th>Kategori</th>
                                         <th>Peternakan</th>
                                         <th>QRCode</th>
+                                        <th>Foto</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -164,6 +165,10 @@ Ternak
             {
                 data: 'qrcode',
                 name: 'qrcode',
+            },
+            {
+                data: 'gallery',
+                name: 'gallery',
             },
             {
                 data: 'aksi',

@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FarmController;
 use App\Http\Controllers\FarmDetailController;
+use App\Http\Controllers\GalleryAnimalController;
 use App\Http\Controllers\GalleryFarmController;
 use App\Http\Controllers\GalleryOfficeController;
 use App\Http\Controllers\OfficeController;
@@ -43,6 +44,12 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin,opera
     Route::get('animal-data/{animal}/edit', [AnimalController::class, 'edit'])->name('animal-data.edit');
     Route::put('animal-data/{animal}', [AnimalController::class, 'update'])->name('animal-data.update');
     Route::delete('animal-data/{animal}', [AnimalController::class, 'destroy'])->name('animal-data.destroy');
+
+    //Gallery Animal
+    Route::get('animal-gallery/{id}', [GalleryAnimalController::class, 'index'])->name('animal-gallery.index');
+    Route::get('animal-gallery/create/{gallery}', [GalleryAnimalController::class, 'create'])->name('animal-gallery.create');
+    Route::post('animal-gallery', [GalleryAnimalController::class, 'store'])->name('animal-gallery.store');
+    Route::delete('animal-gallery/destroy/{gallery}', [GalleryAnimalController::class, 'destroy'])->name('animal-gallery.destroy');
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin']], function(){

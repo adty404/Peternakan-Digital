@@ -32,7 +32,7 @@ class Animal extends Model
         return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 
-    public function gallery(){
-        return $this->hasMany(Gallery::class);
+    public function gallery_animal(){
+        return $this->hasMany(GalleryAnimal::class);
     }
 }

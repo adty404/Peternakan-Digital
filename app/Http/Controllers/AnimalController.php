@@ -71,8 +71,11 @@ class AnimalController extends Controller
                 <a href="'.route('animal.qrcode', ['qrcode' => $animal['qrcode']]).'" target="_blank" style="color:black; font-size:20px;"><i class="fa fa-qrcode"></i></a>
                 ';
             })
+            ->addColumn('gallery', function($animal) {
+                return '<a href="'.route('animal-gallery.index', ['id' => $animal['id']]).'" class="btn btn-primary btn-sm" style="margin-top: 5px;">Foto</a>';
+            })
             ->addIndexColumn()
-            ->rawColumns(['category', 'farm', 'created_by', 'updated_by', 'updated_at', 'aksi', 'qrcode'])
+            ->rawColumns(['category', 'farm', 'created_by', 'updated_by', 'updated_at', 'aksi', 'qrcode', 'gallery'])
             ->make(true);
         }
         return view('pages.admin.animal.index');
