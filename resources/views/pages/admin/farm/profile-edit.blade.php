@@ -37,7 +37,7 @@ Peternakan
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-circle" width="100" height="70"
+                  <img class="profile-user-img" width="100" height="70"
                        src="{{ $farm->logo }}"
                        alt="Logo Peternakan">
                 </div>

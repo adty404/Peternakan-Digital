@@ -29,7 +29,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>{{ $one->name }}</h3>
+                            <h3 style="white-space: normal;">{{ $one->name }}</h3>
 
                             <p>Perusahaan</p>
                         </div>
@@ -44,7 +44,7 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>{{ $two->name }}</h3>
+                            <h3 style="white-space: normal;">{{ $two->name }}</h3>
 
                             <p>Peternakan</p>
                         </div>
@@ -59,7 +59,7 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>{{ $three }}</h3>
+                            <h3 style="white-space: normal;">{{ $three }}</h3>
 
                             <p>Kategori</p>
                         </div>
@@ -74,7 +74,7 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>{{ $four }}</h3>
+                            <h3 style="white-space: normal;">{{ $four }}</h3>
 
                             <p>Ternak</p>
                         </div>

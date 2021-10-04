@@ -36,7 +36,7 @@
                         <div class="icon">
                             <i class="fa fa-user"></i>
                         </div>
-                        <a href="{{ route('user-all.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

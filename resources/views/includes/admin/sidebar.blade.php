@@ -1,26 +1,46 @@
 <aside class="main-sidebar sidebar-dark-primary">
     <!-- Brand Logo -->
+
     <a href="#" class="brand-link">
-        @if (auth()->user()->role == 'master')
-        <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="LOGO" class="img-circle" style="" width="70"
-            height="50">
-        <span class="brand-text font-weight-light">Master</span>
-        @endif
+        <div class="row">
+            <div class="col-md-4">
+                @if (auth()->user()->role == 'master')
+                <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="LOGO" style="width:80px; height:80px;">
+            </div>
+            <div class="col-md-8">
+                <span class="brand-text font-weight-light" style="white-space: normal;">Master</span>
+                @endif
+            </div>
+        </div>
 
-        @if (auth()->user()->role == 'super-admin')
-        <img src="{{ $office_code = App\Models\Office::where('code', auth()->user()->code)->pluck('logo')->first() }}"
-            alt="LOGO" class="img-circle" style="" width="80" height="60">
-        <span
-            class="brand-text font-weight-light">{{ $office_code = App\Models\Office::where('code', auth()->user()->code)->pluck('name')->first() }}</span>
-        @endif
+        <div class="row">
+            <div class="col-md-4">
+                @if (auth()->user()->role == 'super-admin')
+                <img src="{{ $office_code = App\Models\Office::where('code', auth()->user()->code)->pluck('logo')->first() }}"
+                    alt="LOGO" style="width:80px; height:80px;">
 
-        @if (auth()->user()->role == 'admin' || auth()->user()->role == 'operator')
-        <img src="{{ $office_code = App\Models\Farm::where('code', auth()->user()->code)->pluck('logo')->first() }}"
-            alt="LOGO" class="img-circle" style="" width="80" height="60">
-        <span
-            class="brand-text font-weight-light">{{ $office_code = App\Models\Farm::where('code', auth()->user()->code)->pluck('name')->first() }}</span>
-        @endif
+            </div>
+            <div class="col-md-8">
+                <span class="brand-text font-weight-light"
+                    style="white-space: normal;">{{ $office_code = App\Models\Office::where('code', auth()->user()->code)->pluck('name')->first() }}</span>
+                @endif
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                @if (auth()->user()->role == 'admin' || auth()->user()->role == 'operator')
+                <img src="{{ $office_code = App\Models\Farm::where('code', auth()->user()->code)->pluck('logo')->first() }}"
+                    alt="LOGO" style="width:80px; height:80px;">
+            </div>
+            <div class="col-md-8">
+                <span class="brand-text font-weight-light"
+                    style="white-space: normal;">{{ $office_code = App\Models\Farm::where('code', auth()->user()->code)->pluck('name')->first() }}</span>
+                @endif
+            </div>
+        </div>
     </a>
+    
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -68,7 +88,7 @@
                                 class="nav-link {{ (request()->is('office/*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    Data
+                                    Profile
                                 </p>
                             </a>
                         </li>

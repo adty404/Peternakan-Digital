@@ -18,7 +18,7 @@ class GalleryOfficeController extends Controller
      */
     public function index($code)
     {
-        $gallery = Gallery::where('code', $code)->paginate(6);
+        $gallery = Gallery::where('code', $code)->orderBy("id", "desc")->paginate(6);
         
         return view('pages.admin.gallery_office.index', [
             'gallery' => $gallery,
