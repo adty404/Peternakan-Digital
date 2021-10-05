@@ -26,7 +26,7 @@ class OfficeController extends Controller
             return DataTables::of($query)
             ->addColumn('aksi', 'pages.admin.office.action')
             ->addColumn('gallery', function($office) {
-                return '<a href="'.route('office-gallery.index', ['code' => $office['code']]).'" class="btn btn-primary btn-sm" style="margin-top: 5px;">Gallery</a>';
+                return '<a href="'.route('officepics.index', ['code' => $office['code']]).'" class="btn btn-primary btn-sm" style="margin-top: 5px;">Gallery</a>';
             })
             ->addIndexColumn()
             ->rawColumns(['aksi', 'gallery'])

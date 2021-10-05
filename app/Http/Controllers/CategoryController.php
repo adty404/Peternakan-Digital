@@ -55,7 +55,7 @@ class CategoryController extends Controller
         Category::create($data);
 
         Alert::success('Success', 'Berhasil menambahkan data Kategori');
-        return redirect()->route('animal-category.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -103,7 +103,7 @@ class CategoryController extends Controller
         $category->update($data);
 
         Alert::success('Success', 'Berhasil mengubah data Kategori');
-        return redirect()->route('animal-category.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -118,6 +118,6 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        return redirect()->route('animal-category.index');
+        return redirect()->route('category.index');
     }
 }

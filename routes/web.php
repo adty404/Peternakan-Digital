@@ -40,10 +40,11 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin,opera
 
     //Animal
     // Route::resource('animal', AnimalController::class);
-    Route::get('animal-data', [AnimalController::class, 'index'])->name('animal-data.index');
-    Route::get('animal-data/{animal}/edit', [AnimalController::class, 'edit'])->name('animal-data.edit');
-    Route::put('animal-data/{animal}', [AnimalController::class, 'update'])->name('animal-data.update');
-    Route::delete('animal-data/{animal}', [AnimalController::class, 'destroy'])->name('animal-data.destroy');
+    Route::get('data', [AnimalController::class, 'index'])->name('data.index');
+    Route::get('data/{animal}/edit', [AnimalController::class, 'edit'])->name('data.edit');
+    Route::put('data/{animal}', [AnimalController::class, 'update'])->name('data.update');
+    Route::delete('data/{animal}', [AnimalController::class, 'destroy'])->name('data.destroy');
+    Route::get('data/more/{id}', [AnimalController::class, 'more'])->name('data.more');
 
     //Gallery Animal
     Route::get('animal-gallery/{id}', [GalleryAnimalController::class, 'index'])->name('animal-gallery.index');
@@ -54,12 +55,11 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin,opera
 
 Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin']], function(){
     //Category
-    Route::resource('animal-category', CategoryController::class);
+    Route::resource('category', CategoryController::class);
 
     //Animal
-    Route::get('animal-data/create', [AnimalController::class, 'create'])->name('animal-data.create');
-    Route::post('animal-data', [AnimalController::class, 'store'])->name('animal-data.store');
-    Route::get('animal-data/more/{id}', [AnimalController::class, 'more'])->name('animal-data.more');
+    Route::get('data/create', [AnimalController::class, 'create'])->name('data.create');
+    Route::post('data', [AnimalController::class, 'store'])->name('data.store');
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], function(){
@@ -80,10 +80,10 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin']], functio
     Route::delete('farm-gallery/destroy/{gallery}', [GalleryFarmController::class, 'destroy'])->name('farm-gallery.destroy');
 
     //Gallery Office
-    Route::get('office-gallery/{code}', [GalleryOfficeController::class, 'index'])->name('office-gallery.index');
-    Route::get('office-gallery/create/{gallery}', [GalleryOfficeController::class, 'create'])->name('office-gallery.create');
-    Route::post('office-gallery', [GalleryOfficeController::class, 'store'])->name('office-gallery.store');
-    Route::delete('office-gallery/destroy/{gallery}', [GalleryOfficeController::class, 'destroy'])->name('office-gallery.destroy');
+    Route::get('officepics/{code}', [GalleryOfficeController::class, 'index'])->name('officepics.index');
+    Route::get('officepics/create/{gallery}', [GalleryOfficeController::class, 'create'])->name('officepics.create');
+    Route::post('officepics', [GalleryOfficeController::class, 'store'])->name('officepics.store');
+    Route::delete('officepics/destroy/{gallery}', [GalleryOfficeController::class, 'destroy'])->name('officepics.destroy');
 
     //Office Profile Edit
     Route::get('office/{office}/edit', [OfficeController::class, 'edit'])->name('office.edit');

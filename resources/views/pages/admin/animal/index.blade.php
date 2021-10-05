@@ -37,7 +37,7 @@ Ternak
                     <div class="card">
                         <div class="card-header">
                             @if (auth()->user()->role != 'operator')
-                            <a href="{{ route('animal-data.create') }}">
+                            <a href="{{ route('data.create') }}">
                                 <button type="button" class="btn btn-primary" style="float: right;">
                                     <i class="fa fa-plus"></i>
                                     Tambah Data

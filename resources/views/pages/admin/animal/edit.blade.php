@@ -53,7 +53,7 @@ Ubah Data Ternak
                             </ul>
                         </div>
                         @endif
-                        <form method="POST" action="{{ route('animal-data.update', $animal) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('data.update', $animal) }}" enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
                             <div class="card-body">

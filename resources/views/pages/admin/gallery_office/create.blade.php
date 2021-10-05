@@ -49,7 +49,7 @@ Tambah Data Gallery
                             </ul>
                         </div>
                         @endif
-                        <form method="POST" action="{{ route('office-gallery.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('officepics.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">

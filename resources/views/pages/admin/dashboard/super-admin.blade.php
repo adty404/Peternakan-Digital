@@ -67,7 +67,7 @@
                         <div class="icon">
                             <i class="fa fa-clipboard-list"></i>
                         </div>
-                        <a href="{{ route('animal-category.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('category.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -82,7 +82,7 @@
                         <div class="icon">
                             <i class="fa fa-horse"></i>
                         </div>
-                        <a href="{{ route('animal-data.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('data.index') }}" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

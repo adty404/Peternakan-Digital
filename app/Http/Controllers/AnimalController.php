@@ -69,6 +69,7 @@ class AnimalController extends Controller
                 // ';
                 return '
                 <a href="'.route('animal.qrcode', ['qrcode' => $animal['qrcode']]).'" target="_blank" style="color:black; font-size:20px;"><i class="fa fa-qrcode"></i></a>
+                <span style="color:white; font-size:0px;">'. $qrcode_link .'</span>
                 ';
             })
             ->addColumn('gallery', function($animal) {
@@ -134,7 +135,7 @@ class AnimalController extends Controller
         Animal::create($data);
 
         Alert::success('Success', 'Berhasil menambahkan data Hewan');
-        return redirect()->route('animal-data.index');
+        return redirect()->route('data.index');
     }
 
     /**
@@ -193,7 +194,7 @@ class AnimalController extends Controller
         $animal->update($data);
 
         Alert::success('Success', 'Berhasil mengubah data Hewan');
-        return redirect()->route('animal-data.index');
+        return redirect()->route('data.index');
     }
 
     /**
@@ -206,6 +207,6 @@ class AnimalController extends Controller
     {
         $animal->delete();
 
-        return redirect()->route('animal-data.index');
+        return redirect()->route('data.index');
     }
 }

@@ -94,7 +94,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('office-gallery.index', App\Models\Office::where('code', auth()->user()->code)->pluck('code')->first()) }}"
-                                class="nav-link {{ (request()->is('office-gallery*')) ? 'active' : '' }}">
+                                class="nav-link {{ (request()->is('officepics*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Gallery</p>
                             </a>
@@ -112,8 +112,8 @@
                     </a>
                 </li>
                 @endif
-                <li class="nav-item {{ (request()->is('animal*')) ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ (request()->is('animal*')) ? 'active' : '' }}">
+                <li class="nav-item {{ (request()->is('category*') || request()->is('data*')) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ (request()->is('category*') || request()->is('data*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-horse"></i>
                         <p>
                             Ternak
@@ -124,16 +124,16 @@
                         @if(auth()->user()->role == 'master' || auth()->user()->role == 'super-admin' ||
                         auth()->user()->role == 'admin')
                         <li class="nav-item">
-                            <a href="{{ route('animal-category.index') }}"
-                                class="nav-link {{ (request()->is('animal-category*')) ? 'active' : '' }}">
+                            <a href="{{ route('category.index') }}"
+                                class="nav-link {{ (request()->is('category*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kategori</p>
                             </a>
                         </li>
                         @endif
                         <li class="nav-item">
-                            <a href="{{ route('animal-data.index') }}"
-                                class="nav-link {{ (request()->is('animal-data*')) ? 'active' : '' }}">
+                            <a href="{{ route('data.index') }}"
+                                class="nav-link {{ (request()->is('data*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data</p>
                             </a>

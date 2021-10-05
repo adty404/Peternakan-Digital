@@ -61,7 +61,7 @@ class GalleryOfficeController extends Controller
         Gallery::create($data);
 
         Alert::success('Success', 'Berhasil menambahkan data Gallery');
-        return redirect()->route('office-gallery.index', ['code' => $request->code]);
+        return redirect()->route('officepics.index', ['code' => $request->code]);
     }
 
     /**
@@ -108,6 +108,6 @@ class GalleryOfficeController extends Controller
     {
         $gallery->delete();
 
-        return redirect()->route('office-gallery.index', ['code' => $gallery->code]);
+        return redirect()->route('officepics.index', ['code' => $gallery->code]);
     }
 }

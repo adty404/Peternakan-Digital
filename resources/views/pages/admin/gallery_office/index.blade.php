@@ -41,7 +41,7 @@ Gallery Perusahaan
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title" style="line-height: 30px;">Perusahaan - {{ $office->name }}</h4>
-                            <a href="{{ route('office-gallery.create', ['gallery' => $office->code]) }}">
+                            <a href="{{ route('officepics.create', ['gallery' => $office->code]) }}">
                                 <button type="button" class="btn btn-primary" style="float: right;">
                                     <i class="fa fa-plus"></i>
                                     Tambah Data
@@ -57,7 +57,7 @@ Gallery Perusahaan
                                         <img src="{{ $g->picture }}" class="img-fluid mb-2"
                                             alt="gallery-{{ $g->office->name }}" style="width: 162px; height: 162px;" />
                                     </a>
-                                    <button href="{{ route('office-gallery.destroy', ['gallery' => $g->id]) }}"
+                                    <button href="{{ route('officepics.destroy', ['gallery' => $g->id]) }}"
                                         class="btn btn-danger btn-sm" id="delete" style="float: right;"><i
                                             class="fa fa-trash"></i> Hapus</button>
                                 </div>
