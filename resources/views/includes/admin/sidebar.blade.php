@@ -93,7 +93,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('office-gallery.index', App\Models\Office::where('code', auth()->user()->code)->pluck('code')->first()) }}"
+                            <a href="{{ route('officepics.index', App\Models\Office::where('code', auth()->user()->code)->pluck('code')->first()) }}"
                                 class="nav-link {{ (request()->is('officepics*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Gallery</p>
