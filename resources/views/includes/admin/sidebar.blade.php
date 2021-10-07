@@ -112,8 +112,8 @@
                     </a>
                 </li>
                 @endif
-                <li class="nav-item {{ (request()->is('category*') || request()->is('data*')) ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ (request()->is('category*') || request()->is('data*')) ? 'active' : '' }}">
+                <li class="nav-item {{ (request()->is('category*') || request()->is('data*') || request()->is('peristiwa*')) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ (request()->is('category*') || request()->is('data*')) || request()->is('peristiwa*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-horse"></i>
                         <p>
                             Ternak
@@ -136,6 +136,13 @@
                                 class="nav-link {{ (request()->is('data*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('peristiwa.index') }}"
+                                class="nav-link {{ (request()->is('peristiwa*')) ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Peristiwa</p>
                             </a>
                         </li>
                     </ul>

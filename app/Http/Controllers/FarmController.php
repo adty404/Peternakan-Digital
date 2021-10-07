@@ -113,7 +113,7 @@ class FarmController extends Controller
         Farm::create($data);
 
         Alert::success('Success', 'Berhasil menambahkan data Peternakan');
-        return redirect()->route('farm.index');//
+        return redirect()->route('farm.index');
     }
 
     /**

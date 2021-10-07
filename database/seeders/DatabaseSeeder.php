@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(GalleryFarmSeeder::class);
         $this->call(GalleryOfficeSeeder::class);
         $this->call(GalleryAnimalSeeder::class);
+        $this->call(PeristiwaSeeder::class);
     }
 }

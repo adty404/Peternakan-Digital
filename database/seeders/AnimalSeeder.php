@@ -25,6 +25,7 @@ class AnimalSeeder extends Seeder
             'created_by' => '1',
             'updated_by' => '1',
             'qrcode' => 'HkdDs71S',
+            'status' => 'Lahir',
         ]);
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\GalleryAnimalController;
 use App\Http\Controllers\GalleryFarmController;
 use App\Http\Controllers\GalleryOfficeController;
 use App\Http\Controllers\OfficeController;
+use App\Http\Controllers\PeristiwaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserFarmController;
 use App\Http\Controllers\UserOfficeController;
@@ -39,12 +40,15 @@ Route::group(['middleware' => ['auth', 'checkRole:master,super-admin,admin,opera
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     //Animal
-    // Route::resource('animal', AnimalController::class);
     Route::get('data', [AnimalController::class, 'index'])->name('data.index');
     Route::get('data/{animal}/edit', [AnimalController::class, 'edit'])->name('data.edit');
     Route::put('data/{animal}', [AnimalController::class, 'update'])->name('data.update');
     Route::delete('data/{animal}', [AnimalController::class, 'destroy'])->name('data.destroy');
     Route::get('data/more/{id}', [AnimalController::class, 'more'])->name('data.more');
+
+    //Peristiwa
+    Route::resource('peristiwa', PeristiwaController::class);
+    Route::get('peristiwa/more/{id}', [PeristiwaController::class, 'more'])->name('peristiwa.more');
 
     //Gallery Animal
     Route::get('animal-gallery/{id}', [GalleryAnimalController::class, 'index'])->name('animal-gallery.index');

@@ -56,9 +56,6 @@ class AnimalController extends Controller
             ->addColumn('updated_by', function($animal){
                 return $animal->ub['name'];
             })
-            ->addColumn('updated_at', function($animal){
-                return $animal->updated_at->format('d M Y, H:i');
-            })
             ->addColumn('qrcode', function ($animal) {
                 $qrcode_link = route('animal.detail', ['qrcode' => $animal['qrcode']]);
                 $qrcode = QrCode::format('png')->size(500)->generate($qrcode_link);
@@ -76,7 +73,7 @@ class AnimalController extends Controller
                 return '<a href="'.route('animal-gallery.index', ['id' => $animal['id']]).'" class="btn btn-primary btn-sm" style="margin-top: 5px;">Foto</a>';
             })
             ->addIndexColumn()
-            ->rawColumns(['category', 'farm', 'created_by', 'updated_by', 'updated_at', 'aksi', 'qrcode', 'gallery'])
+            ->rawColumns(['category', 'farm', 'created_by', 'updated_by', 'aksi', 'qrcode', 'gallery'])
             ->make(true);
         }
         return view('pages.admin.animal.index');
@@ -131,6 +128,7 @@ class AnimalController extends Controller
         $data = $request->all();
 
         $data['qrcode'] = Str::random(8);
+        $data['status'] = 'Lahir';
 
         Animal::create($data);
 

@@ -25,6 +25,7 @@ class CreateAnimalTable extends Migration
             $table->string('created_by');
             $table->string('updated_by');
             $table->string('qrcode');
+            $table->string('status');
             $table->softDeletes();
             $table->timestamps();
         });

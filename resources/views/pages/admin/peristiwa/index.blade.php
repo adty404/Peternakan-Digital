@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Ternak
+Peristiwa
 @endsection
 
 @section('content')
@@ -12,12 +12,12 @@ Ternak
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Ternak</h1>
+                    <h1 class="m-0">Peristiwa</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Ternak</a></li>
-                        {{-- @if (auth()->user()->role == 'super-admin')
+                        <li class="breadcrumb-item"><a href="#">Peristiwa</a></li>
+                        {{-- @if (auth()->office()->role == 'super-admin')
                 <li class="breadcrumb-item active">Dashboard v1</li>
               @endif --}}
                         <li class="breadcrumb-item active">Index</li>
@@ -36,15 +36,13 @@ Ternak
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            @if (auth()->user()->role != 'operator')
-                            <a href="{{ route('data.create') }}">
+                            <a href="{{ route('peristiwa.create') }}">
                                 <button type="button" class="btn btn-primary" style="float: right;">
                                     <i class="fa fa-plus"></i>
                                     Tambah Data
                                 </button>
                             </a>
-                            @endif
-                            <h3 class="card-title">Tabel Ternak</h3>
+                            <h3 class="card-title">Tabel Peristiwa</h3>
                         </div>
     
                         <div class="card-body">
@@ -52,11 +50,9 @@ Ternak
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama</th>
-                                        <th>Kategori</th>
-                                        <th>Peternakan</th>
-                                        <th>Status</th>
-                                        <th>QRCode</th>
+                                        <th>Tanggal</th>
+                                        <th>Ternak</th>
+                                        <th>Peristiwa</th>
                                         <th>Foto</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -117,6 +113,7 @@ Ternak
         serverSide: true,
         ordering: true,
         scrollX: true,
+        order:[[0,"DESC"]],
         columnDefs: [
                 {
                     "targets": [0, 1, 2, 3, 4, 5], // your case first column
@@ -126,54 +123,25 @@ Ternak
         ajax: {
             url: '{!! url()->current() !!}',
         },
-        dom: "Bfrtip",
-            buttons: [
-                $.extend(true, {}, {
-                    extend: 'csvHtml5',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5],
-                    },
-                    className: 'btn btn-primary',
-                    text: 'CSV',
-                }),
-                $.extend(true, {}, {
-                    extend: 'excelHtml5',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5],
-                        // stripHtml: false
-                    },
-                    className: 'btn btn-primary',
-                    text: 'EXCEL',
-                }),
-            ],
         columns: [{ 
                 data: 'DT_RowIndex', 
                 orderable: false, 
                 searchable : false
             },
             {
-                data: 'name',
-                name: 'name'
+                data: 'tanggal',
+                name: 'tanggal'
             },
             {
-                data: 'category',
-                name: 'category'
+                data: 'ternak',
+                name: 'ternak',
             },
             {
-                data: 'farm',
-                name: 'farm'
-            },
-            {
-                data: 'status',
-                name: 'status'
-            },
-            {
-                data: 'qrcode',
-                name: 'qrcode',
-            },
-            {
-                data: 'gallery',
-                name: 'gallery',
+                data: 'peristiwa',
+                name: 'peristiwa',
+            },{
+                data: 'foto',
+                name: 'foto',
             },
             {
                 data: 'aksi',

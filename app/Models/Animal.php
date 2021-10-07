@@ -12,9 +12,13 @@ class Animal extends Model
 
     protected $table = 'animal';
 
-    protected $fillable = ['category_id', 'farm_id', 'name', 'weight', 'height', 'condition', 'note', 'created_by', 'updated_by', 'qrcode'];
+    protected $fillable = ['category_id', 'farm_id', 'name', 'weight', 'height', 'condition', 'note', 'created_by', 'updated_by', 'qrcode', 'status'];
 
     protected $hidden = [];
+
+    public function peristiwa(){
+        return $this->hasOne(Peristiwa::class);
+    }
 
     public function category(){
         return $this->belongsTo(Category::class, 'category_id', 'id');
