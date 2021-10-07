@@ -53,6 +53,31 @@ Detail Ternak | {{ $animal->name }}
                             <td>:</td>
                             <td>{{ $animal->note }}</td>
                         </tr>
+                        @if ($animal->peristiwa)
+                        <tr>
+                            <td>Status</td>
+                            <td>:</td>
+                            <td>
+                                <b>
+                                    {{ \App\Models\Peristiwa::where('animal_id', $animal->id)->latest('id')->first()->peristiwa }} 
+                                    - 
+                                    {{ \Carbon\Carbon::parse(\App\Models\Peristiwa::where('animal_id', $animal->id)->latest('id')->first()->tanggal)->format('d M Y') }} 
+                                    - 
+                                    {{ \App\Models\Peristiwa::where('animal_id', $animal->id)->latest('id')->first()->ub->name }}
+                                </b>
+                            </td>
+                        </tr>
+                        @else
+                        <tr>
+                            <td>Status</td>
+                            <td>:</td>
+                            <td>
+                                <b>
+                                    {{ $animal->status }}
+                                </b>
+                            </td>
+                        </tr>
+                        @endif
                         <tr>
                             <td><hr /></td>
                             <td></td>

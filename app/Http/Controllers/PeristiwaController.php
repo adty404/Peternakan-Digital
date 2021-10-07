@@ -47,8 +47,12 @@ class PeristiwaController extends Controller
         return view('pages.admin.peristiwa.index');
     }
 
-    public function more(){
+    public function more($id){
+        $peristiwa = Peristiwa::findOrFail($id);
 
+        return view('pages.admin.peristiwa.more', [
+            'peristiwa' => $peristiwa,
+        ]);
     }
 
     /**

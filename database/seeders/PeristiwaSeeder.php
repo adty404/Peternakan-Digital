@@ -20,7 +20,18 @@ class PeristiwaSeeder extends Seeder
             'waktu' => date('H:i'),
             'peristiwa' => 'Lahir',
             'keterangan' => 'Baru lahir',
-            'foto' => 'https://cazh-cdn.sgp1.digitaloceanspaces.com/ternak/peternakan/gallery/Dq8VTaG7Zfhw0sO8YU8DeVy5BhJkezrWRwXLy9xa.jpg',
+            'foto' => 'https://cazh-cdn.sgp1.digitaloceanspaces.com/ternak/perusahaan/gallery/o2Bplx0NeqOcRccUdqJNJpBFJvpNBMegUAbBWAQj.jpg',
+            'created_by' => '2',
+            'updated_by' => '2',
+        ]);
+
+        Peristiwa::create([
+            'animal_id' => '2',
+            'tanggal' => date('d M Y'),
+            'waktu' => date('H:i'),
+            'peristiwa' => 'Lahir',
+            'keterangan' => 'Baru lahir',
+            'foto' => 'https://cazh-cdn.sgp1.digitaloceanspaces.com/ternak/perusahaan/gallery/KSOU9qfxe1qSPiL8RvasNps2zkmzVUzYIQkhFmfC.jpg',
             'created_by' => '2',
             'updated_by' => '2',
         ]);

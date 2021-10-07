@@ -15,7 +15,13 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            'name' => 'Category 1',
+            'name' => 'Etawa',
+            'created_by' => '1',
+            'updated_by' => '1',
+        ]);
+
+        Category::create([
+            'name' => 'Jawa',
             'created_by' => '1',
             'updated_by' => '1',
         ]);

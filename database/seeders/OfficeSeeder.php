@@ -16,12 +16,12 @@ class OfficeSeeder extends Seeder
     {
         Office::create([
             'code' => 'dPFSATjAxlkeHlD8Euz4',
-            'name' => 'Office Test 1',
-            'address' => 'Office Address 1',
-            'email' => 'office1-test@peternakan.com',
+            'name' => 'Bersama Beternak Berdaya',
+            'address' => 'Karangpucung, Cilacap, Jateng',
+            'email' => 'email@bbb.co.id',
             'phone' => '081222125534',
-            'pic' => 'Pic office 1',
-            'logo' => 'https://picsum.photos/id/0/5616/3744'
+            'pic' => 'Bambang',
+            'logo' => 'https://cazh-cdn.sgp1.digitaloceanspaces.com/ternak/perusahaan/logo/Mej6CPMKb7HN19aRAzljC2XWRFH6FfeLjlx0C3Ws.png'
         ]);
     }
 }

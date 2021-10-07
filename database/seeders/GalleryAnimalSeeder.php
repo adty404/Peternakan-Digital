@@ -16,7 +16,21 @@ class GalleryAnimalSeeder extends Seeder
     {
         GalleryAnimal::create([
             'animal_id' => '1',
-            'picture' => 'https://cazh-cdn.sgp1.digitaloceanspaces.com/ternak/peternakan/gallery/Dq8VTaG7Zfhw0sO8YU8DeVy5BhJkezrWRwXLy9xa.jpg',
+            'picture' => 'https://cazh-cdn.sgp1.digitaloceanspaces.com/ternak/perusahaan/gallery/o2Bplx0NeqOcRccUdqJNJpBFJvpNBMegUAbBWAQj.jpg',
+            'created_by' => '1',
+            'updated_by' => '1',
+        ]);
+
+        GalleryAnimal::create([
+            'animal_id' => '1',
+            'picture' => 'https://cazh-cdn.sgp1.digitaloceanspaces.com/ternak/perusahaan/gallery/QvsFnsQseFEpfCfoYLJsHkOBN6NN7Q1VliNZ7iVX.jpg',
+            'created_by' => '1',
+            'updated_by' => '1',
+        ]);
+
+        GalleryAnimal::create([
+            'animal_id' => '2',
+            'picture' => 'https://cazh-cdn.sgp1.digitaloceanspaces.com/ternak/perusahaan/gallery/KSOU9qfxe1qSPiL8RvasNps2zkmzVUzYIQkhFmfC.jpg',
             'created_by' => '1',
             'updated_by' => '1',
         ]);
