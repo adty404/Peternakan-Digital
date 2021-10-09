@@ -89,6 +89,8 @@ Peristiwa
 <link rel="stylesheet" href="{{  asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{  asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{  asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+
+<link rel="stylesheet" href="{{ asset('plugins/ekko-lightbox/ekko-lightbox.css') }}">
 @endpush
 
 @push('addon-script')
@@ -105,6 +107,26 @@ Peristiwa
 <script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
+<script src="{{ asset('plugins/ekko-lightbox/ekko-lightbox.min.js') }}"></script>
+<script src="{{ asset('plugins/filterizr/jquery.filterizr.min.js') }}"></script>
+
+<script>
+    $(function () {
+      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+          alwaysShowClose: true
+        });
+      });
+  
+      $('.filter-container').filterizr({gutterPixels: 3});
+      $('.btn[data-filter]').on('click', function() {
+        $('.btn[data-filter]').removeClass('active');
+        $(this).addClass('active');
+      });
+    })
+  </script>
 
 <script>
     // AJAX DataTable

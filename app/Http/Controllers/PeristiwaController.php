@@ -38,7 +38,12 @@ class PeristiwaController extends Controller
                 return $peristiwa->animal->name;
             })
             ->addColumn('foto', function($peristiwa) {
-                return $peristiwa->foto ? '<a href="' . $peristiwa->foto . '" target="_blank" style="color:black; font-size:20px;"><i class="fas fa-images"></i></a>' : '';
+                // return $peristiwa->foto ? '<a href="' . $peristiwa->foto . '" target="_blank" style="color:black; font-size:20px;"><i class="fas fa-images"></i></a>' : '';
+
+                return '<a href="'. $peristiwa->foto .'" data-toggle="lightbox"
+                data-title="Foto - '. $peristiwa->animal->name.' - '. $peristiwa->peristiwa .' - '.Carbon::parse($peristiwa->tanggal)->format('d M Y').'" data-gallery="gallery" style="color:black;">
+                <i class="fas fa-images"></i>
+            </a>';
             })
             ->addIndexColumn()
             ->rawColumns(['aksi', 'tanggal', 'ternak', 'foto'])

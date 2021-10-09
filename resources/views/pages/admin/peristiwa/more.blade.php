@@ -4,6 +4,10 @@
     Detail
 @endsection
 
+@push('addon-style')
+    <link rel="stylesheet" href="{{ asset('plugins/ekko-lightbox/ekko-lightbox.css') }}">
+@endpush
+
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -69,7 +73,10 @@
                                     <tr>
                                         <td>Foto</td>
                                         <td>:</td>
-                                        <td><a href="{{ $peristiwa->foto }}" target="_blank" style="color:black; font-size:20px;"><i class="fas fa-images"></i></a></td>
+                                        <td><a href="{{ $peristiwa->foto }}" data-toggle="lightbox"
+                                            data-title="Foto - {{ $peristiwa->animal->name }}" data-gallery="gallery" style="color:black;">
+                                            <i class="fas fa-images">
+                                        </a></td>
                                     </tr>
                                     <tr>
                                         <td>Pencatat</td>
@@ -102,4 +109,24 @@
       window.history.back();
     }
 </script>
+
+<script src="{{ asset('plugins/ekko-lightbox/ekko-lightbox.min.js') }}"></script>
+<script src="{{ asset('plugins/filterizr/jquery.filterizr.min.js') }}"></script>
+
+<script>
+    $(function () {
+      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+          alwaysShowClose: true
+        });
+      });
+  
+      $('.filter-container').filterizr({gutterPixels: 3});
+      $('.btn[data-filter]').on('click', function() {
+        $('.btn[data-filter]').removeClass('active');
+        $(this).addClass('active');
+      });
+    })
+  </script>
 @endpush
