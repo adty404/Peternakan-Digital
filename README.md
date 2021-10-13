@@ -1,5 +1,7 @@
 # ![Aplikasi Peternakan](logo.png)
 
+![Build Status](https://wakatime.com/badge/user/7a01bed2-a6a3-4e98-8055-d76ffbd563e7/project/71a2de7c-fee2-408f-bbf7-a7dfc505acd1.svg)
+
 > ### Aplikasi Peternakan Digital dengan QRCode dan memiliki 4 roles: Master, Super Admin, Admin, dan Operator.
 
 ----------
